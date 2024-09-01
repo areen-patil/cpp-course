@@ -1,9 +1,14 @@
-#include <bits/stdc++.h>
-using namespace std;
+// #include <bits/stdc++.h>
 #include <iostream>
 #include <sstream>
 #include <ctime>
 #include <iomanip>
+#include <string>
+#include <vector>
+#include <chrono>
+#include <fstream>
+#include <cstdio>
+using namespace std;
 
 struct Date {     //created a struct for dates in order to calculate the difference between the dates
     int year, month, day;
@@ -1482,7 +1487,7 @@ int main(int argc, char *argv[]){
     string line;
     while(true){
         getline(*input_stream,line);
-        line=remove_white_spaces(line);
+        // line=remove_white_spaces(line);
         string command="";
         string congregation_name="";
         string congregation_type="";
@@ -1977,6 +1982,7 @@ int main(int argc, char *argv[]){
             }
             add_Event(venue_list,reserves,congregation_name,vname,country,sdate,start_time,end_time,ename);        }
         else if(command=="deleteEvent"){
+            ind++;
             ind++;
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
