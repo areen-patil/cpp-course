@@ -377,8 +377,8 @@ void add_Venue(vector <Venue>&venue_list,string vname,string location,string cap
         }
     }
     if(found==1){
-        cout<<-1<<endl;
-        cout<<"Error"<<endl;
+        cout<<"-1\nError"<<endl;
+        // cout<<"Error"<<endl;
         // cout<<"venue aldready exists";
         return;
     }
@@ -447,8 +447,8 @@ void show_Venues(vector <Venue> &venue_list,string location){
         }
     }
     else{
-        cout<<-1<<endl;
-        cout<<"Error"<<endl;
+        cout<<"-1\nError"<<endl;
+        // cout<<"Error"<<endl;
         return;
     }
     //the above if else was used for counting the number of venues that lie in the given region/area specified
@@ -495,8 +495,8 @@ void delete_Venue(vector <Venue> &venue_list,vector <Reservation>&reserves,vecto
         }
     }
     if(exists==0){
-        cout<<-1<<endl;
-        cout<<"Error"<<endl;
+        cout<<"-1\nError"<<endl;
+        // cout<<"Error"<<endl;
         //cout<<"venue does not exists"<<endl;
         return;
     }
@@ -508,8 +508,8 @@ void delete_Venue(vector <Venue> &venue_list,vector <Reservation>&reserves,vecto
         }
     }
     if(found==1){
-        cout<<-1<<endl;
-        cout<<"Error"<<endl;
+        cout<<"-1\nError"<<endl;
+        // cout<<"Error"<<endl;
         // cout<<"Reservation still exists with respect to the congregation"<<endl;
         return;
     }
@@ -537,8 +537,8 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
         }
     }
     if(found==0){
-        cout<<-1<<endl;
-        cout<<"Error"<<endl;
+        cout<<"-1\nError"<<endl;
+        // cout<<"Error"<<endl;
         // cout<<"the event cannot be added without reservation for the venue and the congregation"<<endl;
         return;
     }
@@ -558,14 +558,14 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
     }
     int dd1=dateDifference(venue_list[ind].cong[ind1].start_date,sdate);
     if(dd1<0){
-        cout<<-1<<endl;
-        cout<<"Error"<<endl;
+        cout<<"-1\nError"<<endl;
+        // cout<<"Error"<<endl;
         return;
     }
     int dd2=dateDifference(venue_list[ind].cong[ind1].end_date,sdate);
     if(dd2>0){
-        cout<<-1<<endl;
-        cout<<"Error"<<endl;
+        cout<<"-1\nError"<<endl;
+        // cout<<"Error"<<endl;
         return;
     }
     //the above two if statements check if the date of the event to be added lies between the reseved dated for the congregation or not , if no the print an error message
@@ -613,8 +613,8 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
         possible=0;
     }
     if(possible==0){
-        cout<<-1<<endl;
-        cout<<"Error"<<endl;
+        cout<<"-1\nError"<<endl;
+        // cout<<"Error"<<endl;
         // cout<<"problem with time format"<<endl;
         return;
     }
@@ -714,8 +714,8 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
         }
     }
     if(possible==0){
-        cout<<-1<<endl;
-        cout<<"Error"<<endl;
+        cout<<"-1\nError"<<endl;
+        // cout<<"Error"<<endl;
         // cout<<"some of the dates are time interval are overlapping"<<endl;
         return;
     }
@@ -842,8 +842,8 @@ void delete_Event(vector <Venue> &venue_list,string congregation_name,string vna
         }
     }
     if(found_venue==0){
-        cout<<-1<<endl;
-        cout<<"Error"<<endl;
+        cout<<"-1\nError"<<endl;
+        // cout<<"Error"<<endl;
         // cout<<"Venue not found"<<endl;
         return;
     }
@@ -855,8 +855,8 @@ void delete_Event(vector <Venue> &venue_list,string congregation_name,string vna
         }
     }
     if(found_congregation==0){
-        cout<<-1<<endl;
-        cout<<"Error"<<endl;
+        cout<<"-1\nError"<<endl;
+        // cout<<"Error"<<endl;
         // cout<<"Congregation not found"<<endl;
         return;
     }
@@ -870,8 +870,8 @@ void delete_Event(vector <Venue> &venue_list,string congregation_name,string vna
         }
     }
     if(found_event==0){
-        cout<<-1<<endl;
-        cout<<"Error"<<endl;
+        cout<<"-1\nError"<<endl;
+        // cout<<"Error"<<endl;
         // cout<<"Event not found"<<endl;
         return;
     }
@@ -892,8 +892,8 @@ void show_Events(vector <Venue> &venue_list,string venue_name,string country,str
         }
     }
     if(found==0){
-        cout<<-1<<endl;
-        cout<<"Error"<<endl;
+        cout<<"-1\nError"<<endl;
+        // cout<<"Error"<<endl;
         // cout<<"venue does not exists"<<endl;
         return;
     }
@@ -1020,8 +1020,8 @@ void show_Calendar(vector <Reservation>&reserves,vector <Venue>&venue_list,strin
         }
     }
     if(found==0){
-        cout<<-1<<endl;
-        cout<<"Error"<<endl;
+        cout<<"-1\nError"<<endl;
+        // cout<<"Error"<<endl;
         // cout<<"venue not found"<<endl;
         return;
     }
@@ -1033,8 +1033,8 @@ void show_Calendar(vector <Reservation>&reserves,vector <Venue>&venue_list,strin
         }
     }
     if(reservation_exists==0){
-        cout<<-1<<endl;
-        cout<<"Error"<<endl;
+        cout<<"-1\nError"<<endl;
+        // cout<<"Error"<<endl;
         // cout<<"reservation not found"<<endl;
         return;
     }
@@ -1138,8 +1138,8 @@ void add_Congregation(vector <Congregation>&congregation_list,string congregatio
         }
     }
     if(found==1){
-        cout<<-1<<endl;
-        cout<<"Error"<<endl;
+        cout<<"-1\nError"<<endl;
+        // cout<<"Error"<<endl;
         // cout<<"congregation aldready exists"<<endl;
         return;
     }
@@ -1160,8 +1160,8 @@ void delete_Congregation(vector <Congregation>&congregation_list,vector <Reserva
         }
     }
     if(found==0){
-        cout<<-1<<endl;
-        cout<<"Error"<<endl;
+        cout<<"-1\nError"<<endl;
+        // cout<<"Error"<<endl;
         // cout<<"Congregaator not found"<<endl;
         return;
     }
@@ -1196,8 +1196,8 @@ void reserve_Venue(vector <Reservation>&reserves,vector <Congregation>&congregat
         }
     }
     if(found==1){
-        cout<<-1<<endl;
-        cout<<"Error"<<endl;
+        cout<<"-1\nError"<<endl;
+        // cout<<"Error"<<endl;
         // cout<<"Aldready reserved"<<endl;
         return;
     }
@@ -1213,8 +1213,8 @@ void reserve_Venue(vector <Reservation>&reserves,vector <Congregation>&congregat
         }
     }
     if(venue_exist==0){
-        cout<<-1<<endl;
-        cout<<"Error"<<endl;
+        cout<<"-1\nError"<<endl;
+        // cout<<"Error"<<endl;
         // cout<<"venue doesnt exist"<<endl;
         return;
     }
@@ -1226,8 +1226,8 @@ void reserve_Venue(vector <Reservation>&reserves,vector <Congregation>&congregat
         }
     }
     if(congregation_exist==0){
-        cout<<-1<<endl;
-        cout<<"Error"<<endl;
+        cout<<"-1\nError"<<endl;
+        // cout<<"Error"<<endl;
         // cout<<"congregation doesnt exist"<<endl;
         return;
     }
@@ -1343,8 +1343,8 @@ void reserve_Venue(vector <Reservation>&reserves,vector <Congregation>&congregat
         }
     }
     if(possible==0){
-        cout<<-1<<endl;
-        cout<<"Error"<<endl;
+        cout<<"-1\nError"<<endl;
+        // cout<<"Error"<<endl;
         // cout<<"The date are coliding with a aldready existing congregation"<<endl;
         return;
     }
@@ -1377,8 +1377,8 @@ void free_Venue(vector <Venue> &venue_list,vector <Reservation>&reserves,string 
         }
     }
     if(found==0){
-        cout<<-1<<endl;
-        cout<<"Error"<<endl;
+        cout<<"-1\nError"<<endl;
+        // cout<<"Error"<<endl;
         // cout<<"venue not found"<<endl;
         return;
     }
@@ -1412,8 +1412,8 @@ void show_reserve(vector <Congregation>& congregation_list,vector <Reservation> 
         }
     }
     if(found==0){
-        cout<<-1<<endl;
-        cout<<"Error"<<endl;
+        cout<<"-1\nError"<<endl;
+        // cout<<"Error"<<endl;
         // cout<<"congregation does not exists"<<endl;
         return;
     }
