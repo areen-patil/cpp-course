@@ -1080,7 +1080,6 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
         // }
     }
     cout<<0<<endl;
-    // for(int is=0;i<)
     return;
 }
 
@@ -1435,48 +1434,7 @@ void show_Calendar(vector <Reservation>&reserves,vector <Venue>&venue_list,strin
             }
         }
     }
-//     for(int i=0;i<venue_list[ind].cong[ind1].events.size();i++){
-//         // cout<<venue_list[ind].cong[i].name<<endl;
-//         // // cout<<"Now going to print the corresponding events"<<endl;
-//         // vector <string> dates;
-//         // for(int j=0;j<venue_list[ind].cong[i].events.size();j++){
-//         //     int present=0;
-//         //     for(int k=0;k<dates.size();k++){
-//         //         if(dates[k]==venue_list[ind].cong[i].events[j].date){
-//         //             present=1;
-//         //             break;
-//         //         }
-//         //     }
-//         //     if(present==0){
-//         //         dates.push_back(venue_list[ind].cong[i].events[j].date);
-//         //     }
-//         // }
-//         // cout<<"printing the dates: "<<endl;
-//         // for(int i=0;i<dates.size();i++){
-//         //     cout<<dates[i]<<" ";
-//         // }
-//         for(int m=0;m<dates.size();m++){
-//             cout<<dates[m]<<" ";
-//             int count=0;
-//             for(int n=0;n<venue_list[ind].cong[i].events.size();n++){
-//                 if(venue_list[ind].cong[i].events[n].date==dates[m]){
-//                     count++;
-//                 }
-//             }
-//             cout<<count<<endl;
-//             if(count==0){
-//                 cout<<"NULL"<<endl;
-//             }
-//             else{
-//                 for(int n=0;n<venue_list[ind].cong[i].events.size();n++){
-//                     if(venue_list[ind].cong[i].events[n].date==dates[m]){
-//                         cout<<venue_list[ind].cong[i].events[n].event_name<<" "<<venue_list[ind].cong[i].events[n].start_time<<" "<<venue_list[ind].cong[i].events[n].end_time<<endl;
-//                     }
-//                 }   
-//             }
-//         }
-//     }
-//     return;
+    return;
 }
 
 void add_Congregation(vector <Congregation>&congregation_list,string congregation_name,string congregation_type,string start_date,string end_date){
@@ -1594,18 +1552,6 @@ void reserve_Venue(vector <Reservation>&reserves,vector <Congregation>&congregat
     string end_ayear="";
     string end_amonth="";
     string end_adate="";
-    // cout<<"The error could be here: "<<congregation_list[ind].start_date<<endl;
-    // cout<<"The error could be here:  "<<congregation_list[ind].end_date<<endl;
-    // cout<<congregation_list[ind].start_date[0]<<endl;
-    // cout<<congregation_list[ind].start_date[1]<<endl;
-    // cout<<congregation_list[ind].start_date[2]<<endl;
-    // cout<<congregation_list[ind].start_date[3]<<endl;
-    // cout<<congregation_list[ind].start_date[4]<<endl;
-    // cout<<congregation_list[ind].start_date[5]<<endl;
-    // cout<<congregation_list[ind].start_date[6]<<endl;
-    // cout<<congregation_list[ind].start_date[7]<<endl;
-    // cout<<congregation_list[ind].start_date[8]<<endl;
-    // cout<<congregation_list[ind].start_date[9]<<endl;
     ayear += congregation_list[ind].start_date[0];
     ayear += congregation_list[ind].start_date[1];
     ayear += congregation_list[ind].start_date[2];
@@ -1622,24 +1568,7 @@ void reserve_Venue(vector <Reservation>&reserves,vector <Congregation>&congregat
     end_amonth += congregation_list[ind].end_date[6];
     end_adate += congregation_list[ind].end_date[8];
     end_adate += congregation_list[ind].end_date[9];
-    
-    // ayear+=(congregation_list[ind].start_date[0]+congregation_list[ind].start_date[1]+congregation_list[ind].start_date[2]+congregation_list[ind].start_date[3]);
-    // ind=ind+4;
-    // ind++;
-    // amonth+=congregation_list[ind].start_date[5]+congregation_list[ind].start_date[6];
-    // adate+=congregation_list[ind].start_date[8]+congregation_list[ind].start_date[9];
-    // end_ayear+=congregation_list[ind].end_date[0]+congregation_list[ind].end_date[1]+congregation_list[ind].end_date[2]+congregation_list[ind].end_date[3];
-    // ind=ind+4;
-    // ind++;
-    // end_amonth+=congregation_list[ind].end_date[5]+congregation_list[ind].end_date[6];
-    // end_adate+=congregation_list[ind].end_date[8]+congregation_list[ind].end_date[9];
-    // cout<<"what is wrong with the value of ayear: "<<endl;
-    // cout<< ayear<<endl;
-    // cout<< amonth<<endl;
-    // cout<< adate<<endl;
-    // cout<< end_ayear<<endl;
-    // cout<< end_amonth<<endl;
-    // cout<< end_adate<<endl;
+
     int year=stoi(ayear);
     int month=stoi(amonth);
     int date=stoi(adate);
@@ -1667,18 +1596,14 @@ void reserve_Venue(vector <Reservation>&reserves,vector <Congregation>&congregat
             temp_end_year="";
             temp_end_month="";
             temp_end_date="";
-            // reserves[i].
             temp_year+=reserves[i].start_date[0];
             temp_year+=reserves[i].start_date[1];
             temp_year+=reserves[i].start_date[2];
             temp_year+=reserves[i].start_date[3];
             temp_month+=reserves[i].start_date[5];
             temp_month+=reserves[i].start_date[6];
-            // temp_year=congregation_list[i].start_date[0]+congregation_list[i].start_date[1]+congregation_list[i].start_date[2]+congregation_list[i].start_date[3];
-            // temp_month=congregation_list[i].start_date[5]+congregation_list[i].start_date[6];
             temp_date+=reserves[i].start_date[8];
             temp_date+=reserves[i].start_date[9];
-            // temp_date=congregation_list[i].start_date[8]+congregation_list[i].start_date[9];
             temp_end_year+=reserves[i].end_date[0];
             temp_end_year+=reserves[i].end_date[1];
             temp_end_year+=reserves[i].end_date[2];
@@ -1687,22 +1612,16 @@ void reserve_Venue(vector <Reservation>&reserves,vector <Congregation>&congregat
             temp_end_month+=reserves[i].end_date[6];
             temp_end_date+=reserves[i].end_date[8];
             temp_end_date+=reserves[i].end_date[9];
-            // temp_end_year=congregation_list[i].end_date[0]+congregation_list[i].end_date[1]+congregation_list[i].end_date[2]+congregation_list[i].end_date[3];
-            // temp_end_month=congregation_list[i].end_date[5]+congregation_list[i].end_date[6];
-            // temp_end_date=congregation_list[i].end_date[8]+congregation_list[i].end_date[9];
-            // // int 
             int_year=stoi(temp_year);
             int_month=stoi(temp_month);
             int_date=stoi(temp_date);
             int_end_year=stoi(temp_end_year);
             int_end_month=stoi(temp_end_month);
             int_end_date=stoi(temp_end_date);
-            // reserves[i].display();
             // cout<<"start date: "<<reserves[i].start_date<<endl;
             // cout<<"end date: "<<reserves[i].end_date<<endl;
             // cout<<"start date: "<<year<<" "<<month<<" "<<date<<endl;
             // cout<<"end date: "<<end_year<<" "<<end_month<<" "<<end_date<<endl;
-            // cout<<"DISPLAY DONE"<<endl;
             // cout<<"printing the start date of reservation: "<<int_year<<" "<<int_month<<" "<<int_date<<endl;
             // cout<<"printing the end date of the reservation:  "<<int_end_year<<" "<<int_end_month<<" "<<int_end_date<<endl;
             // cout<<"printing the start date to be reseved: "<<year<<" "<<month<<" "<<date<<endl;
@@ -1711,9 +1630,6 @@ void reserve_Venue(vector <Reservation>&reserves,vector <Congregation>&congregat
             int b=date_comparator(end_year,end_month,end_date,int_end_year,int_end_month,int_end_date);
             int c=date_comparator(end_year,end_month,end_date,int_year,int_month,int_date);
             int d=date_comparator(year,month,date,int_end_year,int_end_month,int_end_date);
-            // cout<<"the value of a: "<<a<<endl;
-            // cout<<"the value of b: "<<b<<endl;
-            // cout<<"the value of c: "<<c<<endl;
             if(a==2 && d==1){
                 possible=0;
                 break;
@@ -1749,23 +1665,11 @@ void reserve_Venue(vector <Reservation>&reserves,vector <Congregation>&congregat
         return;
     }
     Reservation res(vname,congregation_name,country,congregation_list[ind].start_date,congregation_list[ind].end_date,capa,l); 
-    // string vname,string cname,string con_name,string sdate,string edate,string cap,string l
-    // string vname,string cname,string con_name,int sdate,int edate
-    // Reservation(string vname,string cname,string con_name,string sdate,string edate,string cap,string l){
-    //     venue_name=vname;
-    //     congregation_name=cname;
-    //     country_name=con_name;
-    //     start_date=sdate;
-    //     end_date=edate;
-    //     capacity=cap;
-    //     location=l;
-    // }
     reserves.push_back(res);
     int ind1=0;
     // Congregation c(congregation_name,congre);
     for(int i=0;i<venue_list.size();i++){
         if(venue_list[i].venue_name==vname){
-            // venue_list[i].cong.push_back();
             ind1=i;
             break;
         }
