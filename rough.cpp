@@ -5,13 +5,13 @@ using namespace std;
 #include <ctime>
 #include <iomanip>
 
-struct Date {
+struct Date {     //created a struct for dates in order to calculate the difference between the dates
     int year, month, day;
 
     Date(int y, int m, int d) : year(y), month(m), day(d) {}
 };
 
-Date parseDate(const std::string& dateStr) {
+Date parseDate(const std::string& dateStr) {  //this func takes the date in the form of string as input and returns the object of the type Date
     int year, month, day;
     char sep;  // To discard the ':' characters
     std::istringstream(dateStr) >> year >> sep >> month >> sep >> day;
@@ -39,9 +39,8 @@ int dateDifference(const std::string& date1, const std::string& date2) {
     return daysBetween(d2, d1);  // Switch d1 and d2 to get correct sign
 }
 
-// }
 
-class Event{
+class Event{  //the class of event and its attributes
 public:
     string event_name;
     string venue_name;
@@ -57,13 +56,13 @@ public:
         this->start_time=start_time;
         this->end_time=end_time;
     }
-    void display(){
+    void display(){   //member functions to display the attributes of the class events  
         cout<<venue_name<<" "<<country<<" "<<date<<endl;
     }
 };
 class Congregation{
 public:
-    string name;
+    string name;   //attributes of the class Congregation
     string type;
     string start_date;
     string end_date;
@@ -73,7 +72,7 @@ public:
         type=congregation_type;
         start_date=s_date;
         end_date=e_date;
-        events={};
+        events={};  //intialising an empty vector of events to add events corresponding to the events later on
     }
     void display(){
         cout<<name<<" "<<type<<" "<<start_date<<" "<<end_date<<endl;
@@ -88,7 +87,7 @@ public:
     string country;
     string capacity;
     string location_address;
-    vector <Congregation> cong;
+    vector <Congregation> cong;  //contains a vector of congregations , the congregations are added to this once they are reseved for the particular venue
     Venue(string vname,string sstate,string scity,string spostal,string scountry,string cap,string location_add){
         venue_name=vname;
         state=sstate;
@@ -99,7 +98,7 @@ public:
         cong={};
         location_address=location_add;
     }
-    void display(){
+    void display(){  //member funtion to display the attributes of the venue in case of the command showVenues
         cout<<venue_name<<" "<<location_address<<":"<<city<<":"<<state<<":"<<postal<<":"<<country<<" "<<capacity<<endl;
     }
 };
@@ -128,7 +127,7 @@ public:
     }
 }; 
 int date_comparator(int year1,int month1,int date1,int year2 ,int month2,int date2){
-    if(year1<year2){
+    if(year1<year2){  //this function compares between two dates and returns 1 if the first date is smaller and retruns 2 if the second date is smaller
         return 1;
     }
     else if(year2<year1){
@@ -141,7 +140,7 @@ int date_comparator(int year1,int month1,int date1,int year2 ,int month2,int dat
         else if(month2<month1){
             return 2;
         }
-        else{
+        else{  //if both the year and months are the same then check on the basis of the dates
             if(date1<date2){
                 return 1;
             }
@@ -156,7 +155,7 @@ int date_comparator(int year1,int month1,int date1,int year2 ,int month2,int dat
     return 0;
 }
 
-int leap_year_checker(int year){
+int leap_year_checker(int year){  //checks if the given year is a leap year
     int val=year/1000;
     if(val*1000==year){
         if(year%400==0){
@@ -177,7 +176,7 @@ int leap_year_checker(int year){
 }
 
 
-int date_verifier(string current_date){
+int date_verifier(string current_date){ //verifies is the given date is valid
     int start_year,start_month,start_date;
     int year,month,date;
     string temp="";
@@ -198,7 +197,7 @@ int date_verifier(string current_date){
     int dmonth=8;
     int ddate=30;
     date=start_date;
-    if(start_month==2){
+    if(start_month==2){  //check for the month of february depending in whether it is a leap year or not
         if(leap_year_checker(year)==1){
             if(date<=29 && date>=1){
                 return 1;
@@ -217,7 +216,7 @@ int date_verifier(string current_date){
         }
     }
     else if(start_month==1 || start_month==3 || start_month==5 || start_month==7 || start_month==8 || start_month==10 || start_month==12){
-        if(date<=31 && date>=1){
+        if(date<=31 && date>=1){     //checking for the months with 31 days
             return 1;
         }
         else{
@@ -225,7 +224,7 @@ int date_verifier(string current_date){
         }
     }
     else if(start_month==4 || start_month==6 || start_month==9 || start_month==11){
-        if(date<=30 && date>=1){
+        if(date<=30 && date>=1){      //checking for the months with 30 days
             return 1;
         }
         else{
@@ -235,7 +234,7 @@ int date_verifier(string current_date){
     return 0;
 }
 
-int start_end_verifier(string date1,string date2){
+int start_end_verifier(string date1,string date2){  //verifies is the start and the end dates for a congregation or event are valid
     int val=date_verifier(date1);
     if(val==-1){
         // cout<<"date1 is not correct"<<endl;
@@ -288,14 +287,14 @@ int start_end_verifier(string date1,string date2){
     int dmonth=8;
     int ddate=30;
     if(date_comparator(start_year,start_month,start_date,dyear,dmonth,ddate)==1){
-        return -1;
+        return -1;    //if the dates is of the past then it is invalid
     }
     return 1;
 }
 
-vector <int> date_diff(string date1,string date2){
-    int start_year,start_month,start_date;
-    int end_year,end_month,end_date;
+vector <int> date_diff(string date1,string date2){  //calculates teh diff between the dates
+    int start_year,start_month,start_date; //the diff between this func and the DateDifference funciton is that this funciton return the diff between the year and the year, months and the dates in the form of a vector 
+    int end_year,end_month,end_date;//whereas the latter one returns the actual diff in the dates in terms of the days 
     string temp="";
     temp+=date1[0];
     temp+=date1[1];
@@ -331,65 +330,17 @@ vector <int> date_diff(string date1,string date2){
     return v;
 }
 
-int dates_days_difference(string date1, string date2){
-    int start_year,start_month,start_date;
-    int end_year,end_month,end_date;
-    string temp="";
-    temp+=date1[0];
-    temp+=date1[1];
-    temp+=date1[2];
-    temp+=date1[3];
-    start_year=stoi(temp);
-    temp="";
-    temp+=date1[5];
-    temp+=date1[6];
-    start_month=stoi(temp);
-    temp="";
-    temp+=date1[8];
-    temp+=date1[9];
-    start_date=stoi(temp);
-    temp="";
-    temp+=date2[0];
-    temp+=date2[1];
-    temp+=date2[2];
-    temp+=date2[3];
-    end_year=stoi(temp);
-    temp="";
-    temp+=date2[5];
-    temp+=date2[6];
-    end_month=stoi(temp);
-    temp="";
-    temp+=date2[8];
-    temp+=date2[9];
-    end_date=stoi(temp);
 
-}
-int time_verifier(string time){
-    string temp="";
-    int hour,min;
-    temp+=time[0];
-    temp+=time[1];
-    hour=stoi(temp);
-    temp="";
-    temp+=time[3];
-    temp+=time[4];
-    min=stoi(temp);
-    if(hour){
-
-    }
-}
-
-vector <int> time_diff(int hour1,int min1,int hour2,int min2){
+vector <int> time_diff(int hour1,int min1,int hour2,int min2){  //returns a vector with two elements conssiting of the diff between the hours and the minutes respectively
     vector <int> v(2);
-    // if(hour)
     v[0]=hour1-hour2;
     v[1]=min1-min2;
-    return v;
+    return v;    //return the vector with differences of the hour and the min
 }
 void add_Venue(vector <Venue>&venue_list,string vname,string location,string capacity){
     int found=0;
     int ind=0;
-    string city="";
+    string city="";    //separate out the city ,state,postal code and the country from the locations string 
     string state="";
     string postal="";
     string country="";
@@ -418,7 +369,8 @@ void add_Venue(vector <Venue>&venue_list,string vname,string location,string cap
         country+=location[ind];
         ind++;
     }
-    for(int i=0;i<venue_list.size();i++){
+    //uptill here the code consists of just extracting the strings from the location string
+    for(int i=0;i<venue_list.size();i++){ //check if the venue aldready exists
         if(venue_list[i].venue_name==vname && venue_list[i].country==country){
             found=1;
             break;
@@ -431,12 +383,12 @@ void add_Venue(vector <Venue>&venue_list,string vname,string location,string cap
         return;
     }
     Venue ven(vname,state,city,postal,country,capacity,location_address);
-    venue_list.push_back(ven);
+    venue_list.push_back(ven);  //add the venue to the venue_list
     cout<<0<<endl;
     return;
 }
 void show_Venues(vector <Venue> &venue_list,string location){
-    string city="";
+    string city="";  //variables to store the string names
     string state="";
     string postal="";
     string country="";
@@ -461,8 +413,10 @@ void show_Venues(vector <Venue> &venue_list,string location){
         country+=location[ind];
         ind++;
     }
+    // extracting the names from the location string 
     int cnt=0;
 
+    //the following if-else conditions basically consider the diff forms in which the date can be given
     if(city!="" && state!="" && postal=="" && country!=""){
         for(int i=0;i<venue_list.size();i++){
             if(venue_list[i].city==city && venue_list[i].state==state && venue_list[i].country==country){
@@ -497,6 +451,7 @@ void show_Venues(vector <Venue> &venue_list,string location){
         cout<<"Error"<<endl;
         return;
     }
+    //the above if else was used for counting the number of venues that lie in the given region/area specified
     cout<<cnt<<endl;
     if(city!="" && state!="" && postal=="" && country!=""){
         for(int i=0;i<venue_list.size();i++){
@@ -527,12 +482,13 @@ void show_Venues(vector <Venue> &venue_list,string location){
             }
         }
     }
+    //the above if-else are used for printing the counted venues
     return;
 }
 
 void delete_Venue(vector <Venue> &venue_list,vector <Reservation>&reserves,vector <Congregation> &cong,string vname,string country_name){
     int exists=0;
-    for(int i=0;i<venue_list.size();i++){
+    for(int i=0;i<venue_list.size();i++){  //check whether the venue to be deleted actually exists or not
         if(venue_list[i].venue_name==vname && venue_list[i].country==country_name){
             exists=1;
             break;
@@ -541,10 +497,11 @@ void delete_Venue(vector <Venue> &venue_list,vector <Reservation>&reserves,vecto
     if(exists==0){
         cout<<-1<<endl;
         cout<<"Error"<<endl;
+        //cout<<"venue does not exists"<<endl;
         return;
     }
     int found=0;
-    for(int i=0;i<reserves.size();i++){
+    for(int i=0;i<reserves.size();i++){ //before deleting check if their still exists a reservation for the venue if yes then do not delete and print an error message
         if(reserves[i].venue_name==vname && reserves[i].country_name==country_name){
             found=1;
             break;
@@ -573,7 +530,7 @@ void delete_Venue(vector <Venue> &venue_list,vector <Reservation>&reserves,vecto
 void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string congregation_name,string vname,string country,string sdate,string start_time, string end_time,string ename){
     int found=0;
     int ind=0;
-    for(int i=0;i<reserves.size();i++){
+    for(int i=0;i<reserves.size();i++){ //check if their exists a reservation for the venue and the congregation only then add the event
         if(reserves[i].congregation_name==congregation_name && reserves[i].venue_name==vname && reserves[i].country_name==country){
             found=1;
             break;
@@ -582,6 +539,7 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
     if(found==0){
         cout<<-1<<endl;
         cout<<"Error"<<endl;
+        // cout<<"the event cannot be added without reservation for the venue and the congregation"<<endl;
         return;
     }
     for(int i=0;i<venue_list.size();i++){
@@ -610,6 +568,7 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
         cout<<"Error"<<endl;
         return;
     }
+    //the above two if statements check if the date of the event to be added lies between the reseved dated for the congregation or not , if no the print an error message
     string temp="";
     temp+=start_time[0];
     temp+=start_time[1];
@@ -628,7 +587,7 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
     int end_min=stoi(temp);
     vector <int> tdiff=time_diff(start_hour,start_min,end_hour,end_min);
     int possible=1;
-    if(tdiff[0]==0){
+    if(tdiff[0]==0){  //checking is the time is valid
         if(tdiff[1]>=0){
             possible=0;
         }
@@ -647,7 +606,7 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
             possible=0;
         }
     }
-    if(start_min%15!=0 || end_min%15!=0){
+    if(start_min%15!=0 || end_min%15!=0){  //checking if the dates are multiples of 15
         possible=0;
     }
     if(start_min>59 || start_min<0 || end_min>59 || end_min<0){
@@ -852,7 +811,7 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
             }
         }
     }
-
+    //ind3 is the index where the event has to be added as per the dates and the time
     if(ind3==venue_list[ind].cong[ind1].events.size()){
         if(possible==1){
             Event ev1(ename,vname,country,sdate,start_time,end_time);
@@ -875,7 +834,7 @@ void delete_Event(vector <Venue> &venue_list,string congregation_name,string vna
     int found_congregation=0;
     int ind=0;
     int ind1=0;
-    for(int i=0;i<venue_list.size();i++){
+    for(int i=0;i<venue_list.size();i++){  //check if the venue exists or not
         if(venue_list[i].venue_name==vname && venue_list[i].country==country){
             found_venue=1;
             ind=i;
@@ -888,7 +847,7 @@ void delete_Event(vector <Venue> &venue_list,string congregation_name,string vna
         // cout<<"Venue not found"<<endl;
         return;
     }
-    for(int i=0;i<venue_list[ind].cong.size();i++){
+    for(int i=0;i<venue_list[ind].cong.size();i++){ //check if the congregation exists or not
         if(venue_list[ind].cong[i].name==congregation_name){
             found_congregation=1;
             ind1=i;
@@ -903,7 +862,7 @@ void delete_Event(vector <Venue> &venue_list,string congregation_name,string vna
     }
     int found_event=0;
     int ind2=0;
-    for(int i=0;i<venue_list[ind].cong[ind1].events.size();i++){
+    for(int i=0;i<venue_list[ind].cong[ind1].events.size();i++){ //check if the event exists or not
         if(venue_list[ind].cong[ind1].events[i].event_name==ename && venue_list[ind].cong[ind1].events[i].start_time==from_time && venue_list[ind].cong[ind1].events[i].date==date){
             ind2=i;
             found_event=1;
@@ -916,7 +875,7 @@ void delete_Event(vector <Venue> &venue_list,string congregation_name,string vna
         // cout<<"Event not found"<<endl;
         return;
     }
-    venue_list[ind].cong[ind1].events.erase(venue_list[ind].cong[ind1].events.begin()+ind2);
+    venue_list[ind].cong[ind1].events.erase(venue_list[ind].cong[ind1].events.begin()+ind2);  //delete the events from its index in the vector
     cout<<0<<endl;
     return;
 }
@@ -938,7 +897,7 @@ void show_Events(vector <Venue> &venue_list,string venue_name,string country,str
         // cout<<"venue does not exists"<<endl;
         return;
     }
-    for(int i=0;i<venue_list[ind].cong.size();i++){
+    for(int i=0;i<venue_list[ind].cong.size();i++){   //count the number of events in the particular venue on the specific date
         for(int j=0;j<venue_list[ind].cong[i].events.size();j++){
             if(venue_list[ind].cong[i].events[j].date==date){
                 cnt++;
@@ -946,7 +905,7 @@ void show_Events(vector <Venue> &venue_list,string venue_name,string country,str
         }
     }
     cout<<cnt<<endl;
-    for(int i=0;i<venue_list[ind].cong.size();i++){
+    for(int i=0;i<venue_list[ind].cong.size();i++){  //print those events
         for(int j=0;j<venue_list[ind].cong[i].events.size();j++){
             if(venue_list[ind].cong[i].events[j].date==date){
                 cout<<venue_list[ind].cong[i].events[j].event_name<<" "<<venue_list[ind].cong[i].events[j].start_time<<" "<<venue_list[ind].cong[i].events[j].end_time<<endl;
@@ -957,7 +916,7 @@ void show_Events(vector <Venue> &venue_list,string venue_name,string country,str
 }
 
 
-string next_date(string current_date){
+string next_date(string current_date){ // funciton takes in the date in the string format and then return the next date
     int start_year,start_month,start_date;
     int year,month,date;
     string temp="";
@@ -1125,7 +1084,7 @@ void show_Calendar(vector <Reservation>&reserves,vector <Venue>&venue_list,strin
     temp+=end_date_congregation[9];
     end_date=stoi(temp);
     string current_date=start_date_congregation;
-    while(true){
+    while(true){  //store the dates that lie in the reservaiton for the congragation
         int temp_year,temp_month,temp_date;
         string st="";
         st+=current_date[0];
@@ -1152,16 +1111,16 @@ void show_Calendar(vector <Reservation>&reserves,vector <Venue>&venue_list,strin
 
     cout<<final_counter<<endl;
 
-    for(int i=0;i<dates.size();i++){
+    for(int i=0;i<dates.size();i++){     
         int temp_cnt=0;
         cout<<dates[i]<<" ";
-        for(int j=0;j<venue_list[ind].cong[ind1].events.size();j++){
+        for(int j=0;j<venue_list[ind].cong[ind1].events.size();j++){  //count the number of events on this date
             if(venue_list[ind].cong[ind1].events[j].date==dates[i]){
                 temp_cnt++;
             }
         }
         cout<<temp_cnt<<endl;
-        for(int j=0;j<venue_list[ind].cong[ind1].events.size();j++){
+        for(int j=0;j<venue_list[ind].cong[ind1].events.size();j++){  //print those events
             if(venue_list[ind].cong[ind1].events[j].date==dates[i]){
                 cout<<venue_list[ind].cong[ind1].events[j].event_name<<" "<<venue_list[ind].cong[ind1].events[j].start_time<<" "<<venue_list[ind].cong[ind1].events[j].end_time<<endl;
             }
@@ -1172,7 +1131,7 @@ void show_Calendar(vector <Reservation>&reserves,vector <Venue>&venue_list,strin
 
 void add_Congregation(vector <Congregation>&congregation_list,string congregation_name,string congregation_type,string start_date,string end_date){
     int found=0;
-    for(int i=0;i<congregation_list.size();i++){
+    for(int i=0;i<congregation_list.size();i++){ //check if the congragation aldready exists
         if(congregation_list[i].name==congregation_name && congregation_list[i].type==congregation_type){
             found=1;
             break;
@@ -1192,7 +1151,7 @@ void add_Congregation(vector <Congregation>&congregation_list,string congregatio
 void delete_Congregation(vector <Congregation>&congregation_list,vector <Reservation>&reserves,string congregation_name){
     int found=0;
     int ind3=0;
-    for(int i=0;i<congregation_list.size();i++){
+    for(int i=0;i<congregation_list.size();i++){  //check if the congregation exists
         // cout<<congregation_list[i].name<<" :: "<<congregation_name<<endl;
         if(congregation_list[i].name==congregation_name){
             found=1;
@@ -1206,7 +1165,7 @@ void delete_Congregation(vector <Congregation>&congregation_list,vector <Reserva
         // cout<<"Congregaator not found"<<endl;
         return;
     }
-    congregation_list.erase(congregation_list.begin()+ind3);
+    congregation_list.erase(congregation_list.begin()+ind3);  //delte teh congragation and also remove reservation that was presetn for that congragation
     vector <int> indices;
     for(int i=reserves.size()-1;i>=0;i--){
         if(reserves[i].congregation_name==congregation_name){
@@ -1221,7 +1180,7 @@ void delete_Congregation(vector <Congregation>&congregation_list,vector <Reserva
 }
 
 void show_Congregation(vector <Congregation>&congregation_list){
-    cout<<congregation_list.size()<<endl;
+    cout<<congregation_list.size()<<endl; //print the number of congregations
     for(int i=0;i<congregation_list.size();i++){
         congregation_list[i].display();
     }
@@ -1321,7 +1280,7 @@ void reserve_Venue(vector <Reservation>&reserves,vector <Congregation>&congregat
     int int_end_year;
     int int_end_month;
     int int_end_date;
-    for(int i=0;i<reserves.size();i++){
+    for(int i=0;i<reserves.size();i++){  //check if the reservation is not collliding with any other resevation for on the same venue on the same date
         if(reserves[i].venue_name==vname && reserves[i].country_name==country){
             temp_year="";
             temp_month="";
@@ -1390,7 +1349,7 @@ void reserve_Venue(vector <Reservation>&reserves,vector <Congregation>&congregat
         return;
     }
     Reservation res(vname,congregation_name,country,congregation_list[ind].start_date,congregation_list[ind].end_date,capa,l); 
-    reserves.push_back(res);
+    reserves.push_back(res); //add the reservation
     int ind1=0;
     for(int i=0;i<venue_list.size();i++){
         if(venue_list[i].venue_name==vname){
@@ -1398,7 +1357,7 @@ void reserve_Venue(vector <Reservation>&reserves,vector <Congregation>&congregat
             break;
         }
     }
-    for(int i=0;i<congregation_list.size();i++){
+    for(int i=0;i<congregation_list.size();i++){ //also add the congregation to the corresponding venue because the resevation is made and now event can be added to it
         if(congregation_list[i].name==congregation_name){
             venue_list[ind1].cong.push_back(congregation_list[i]);
         }
@@ -1423,7 +1382,7 @@ void free_Venue(vector <Venue> &venue_list,vector <Reservation>&reserves,string 
         // cout<<"venue not found"<<endl;
         return;
     }
-    reserves.erase(reserves.begin()+ind);
+    reserves.erase(reserves.begin()+ind);  //delete the reservation
     int ind1=0;
     for(int i=0;i<venue_list.size();i++){
         if(venue_list[i].venue_name==vname && venue_list[i].country==country){
@@ -1438,7 +1397,7 @@ void free_Venue(vector <Venue> &venue_list,vector <Reservation>&reserves,string 
             break;
         }
     }
-    venue_list[ind1].cong.erase(venue_list[ind1].cong.begin()+ind2);
+    venue_list[ind1].cong.erase(venue_list[ind1].cong.begin()+ind2); //also remove the congregation from the venue's list of congregation as it is no longer reserved for it
     cout<<0<<endl;
     return;
 }
@@ -1465,7 +1424,7 @@ void show_reserve(vector <Congregation>& congregation_list,vector <Reservation> 
     }
     cout<<cnt<<endl;
     if(cnt>0){
-        for(int  i=0;i<reserves.size();i++){
+        for(int  i=0;i<reserves.size();i++){  //print the reservations
             if(reserves[i].congregation_name==congregation_name){
                 reserves[i].display();
             }

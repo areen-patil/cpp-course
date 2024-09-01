@@ -16,8 +16,8 @@ addVenue "Lyon9 stadium" "LyonStadium:Lyon:Ile-de-France:332101:France" 10000
 addVenue "Lyon10 stadium" "LyonStadium:Lyon:Ile-de-France:732107:France" 10000
 reserveVenue "Paris stadium" "France" "Paris Olympics 2024"
 addEvent "Paris Olympics 2024" "Paris stadium" "France" "2024-12-31" "12:00" "23:45" "Javelin Throw"
-addEvent "Paris Olympics 2024" "Paris stadium" "France" "2024-10-01" "00:30" "21:45" "Javelin Throw"
-addEvent "Paris Olympics 2024" "Paris stadium" "France" "2026-10-01" "22:00" "23:45" "Javelin Throw"
+addEvent "Paris Olympics 2024" "Paris stadium" "France" "2024-10-01" "00:30" "21:30" "Javelin Throw"
+addEvent "Paris Olympics 2024" "Paris stadium" "France" "2024-10-01" "22:00" "23:45" "Javelin Throw"
 addEvent "Paris Olympics 2024" "Paris stadium" "France" "2024-10-02" "00:00" "00:45" "Javelin Throw"
 addEvent "Paris Olympics 2024" "Paris stadium" "France" "2024-10-04" "00:00" "24:00" "Javelin Throw"
 addEvent "Paris Olympics 2024" "Paris stadium" "France" "2024-10-04" "24:00" "02:00" "Javelin Throw"
