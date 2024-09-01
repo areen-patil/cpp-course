@@ -1411,9 +1411,6 @@ void free_Venue(vector <Venue> &venue_list,vector <Reservation>&reserves,string 
     int found=0;
     int ind=0;
     for(int i=0;i<reserves.size();i++){
-        // cout<<reserves[i].congregation_name<<" :: "<<congregation_name<<endl;
-        // cout<<reserves[i].venue_name<<" :: "<<vname<<endl;
-        // cout<<reserves[i].country_name<<" :: "<<country<<endl;
         if(reserves[i].congregation_name==congregation_name && reserves[i].venue_name==vname && reserves[i].country_name==country){
             found=1;
             ind=i;
@@ -1929,7 +1926,6 @@ int main(int argc, char *argv[]){
                 // cout<<"close the name with double qoutes"<<endl;
                 continue;
             }
-            // cout<<"congregation name: "<<congregation_name<<endl;
             ind++;
             ind++;
             if(line[ind]!='\"'){
@@ -1949,7 +1945,6 @@ int main(int argc, char *argv[]){
                 // cout<<"close the name with double qoutes"<<endl;
                 continue;
             }
-            // cout<<"vname: "<<vname<<endl;
             ind++;
             ind++;
             if(line[ind]!='\"'){
@@ -2023,7 +2018,6 @@ int main(int argc, char *argv[]){
             }
             add_Event(venue_list,reserves,congregation_name,vname,country,sdate,start_time,end_time,ename);        }
         else if(command=="deleteEvent"){
-            // cout<<"NOW IN THE DELETE EVENT INPUT TAKER"<<endl;
             ind++;
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
