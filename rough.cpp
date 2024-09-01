@@ -39,14 +39,6 @@ int dateDifference(const std::string& date1, const std::string& date2) {
     return daysBetween(d2, d1);  // Switch d1 and d2 to get correct sign
 }
 
-// int main() {
-//     std::string date1 = "2023:09:01";
-//     std::string date2 = "2023:08:25";
-
-//     int diff = dateDifference(date1, date2);
-//     std::cout << "Difference in days: " << diff << std::endl;
-
-//     return 0;
 // }
 
 class Event{
@@ -206,7 +198,6 @@ int date_verifier(string current_date){
     int dmonth=8;
     int ddate=30;
     date=start_date;
-    // if(date_comparator())
     if(start_month==2){
         if(leap_year_checker(year)==1){
             if(date<=29 && date>=1){
@@ -245,7 +236,6 @@ int date_verifier(string current_date){
 }
 
 int start_end_verifier(string date1,string date2){
-    // cout<<"start end verifier called"<<endl;
     int val=date_verifier(date1);
     if(val==-1){
         // cout<<"date1 is not correct"<<endl;
@@ -303,7 +293,6 @@ int start_end_verifier(string date1,string date2){
     return 1;
 }
 
-// int greater_time
 vector <int> date_diff(string date1,string date2){
     int start_year,start_month,start_date;
     int end_year,end_month,end_date;
@@ -398,9 +387,6 @@ vector <int> time_diff(int hour1,int min1,int hour2,int min2){
     return v;
 }
 void add_Venue(vector <Venue>&venue_list,string vname,string location,string capacity){
-    // cout<<"Eneter the add venue"<<endl;
-    // cout<<"location: "<<location<<endl;
-    // cout<<capacity<<endl;
     int found=0;
     int ind=0;
     string city="";
@@ -444,30 +430,17 @@ void add_Venue(vector <Venue>&venue_list,string vname,string location,string cap
         // cout<<"venue aldready exists";
         return;
     }
-    // cout<<"location_address: "<<location_address<<endl;
-    // cout<<"city: "<<city<<endl;
-    // cout<<"state: "<<state<<endl;
-    // cout<<"postal: "<<postal<<endl;
-    // cout<<"country: "<<country<<endl;
     Venue ven(vname,state,city,postal,country,capacity,location_address);
-    // string vname,string sstate,string scity,string spostal,string scountry,string cap  --->actual arguments list of the venue constructor
     venue_list.push_back(ven);
     cout<<0<<endl;
-    // return 0;
     return;
 }
 void show_Venues(vector <Venue> &venue_list,string location){
-    // string location_address="";
     string city="";
     string state="";
     string postal="";
     string country="";
     int ind=0;
-    // while(location[ind]!=':'){
-    //     location_address+=location[ind];
-    //     ind++;
-    // }
-    // ind++;
     ind++;
     while(location[ind]!=':'){
         city+=location[ind];
@@ -488,49 +461,33 @@ void show_Venues(vector <Venue> &venue_list,string location){
         country+=location[ind];
         ind++;
     }
-    // cout<<"location_address: "<<location_address<<endl;
-    // cout<<"city: "<<city<<endl;
-    // cout<<"state: "<<state<<endl;
-    // cout<<"postal: "<<postal<<endl;
-    // cout<<"country: "<<country<<endl;
     int cnt=0;
 
     if(city!="" && state!="" && postal=="" && country!=""){
-        // cout<<"first condition satisfied"<<endl;
         for(int i=0;i<venue_list.size();i++){
-            // cout<<venue_list[i].city<<" "<<city<<endl;
-            // cout<<venue_list[i].state<<" "<<state<<endl;
-            // cout<<venue_list[i].country<<" "<<country<<endl;
             if(venue_list[i].city==city && venue_list[i].state==state && venue_list[i].country==country){
-                // arr[i].display();
                 cnt++;
             }
 
         }
     }
     else if(city=="" && state=="" && postal!="" && country!=""){
-        // cout<<"2 condition satisfied"<<endl;
         for(int i=0;i<venue_list.size();i++){
             if(venue_list[i].postal==postal && venue_list[i].country==country){
-                // arr[i].display();
                 cnt++;
             }
         }
     }
     else if(city!="" && state!="" && postal!="" && country!=""){
-        // cout<<"3 condition satisfied"<<endl;
         for(int i=0;i<venue_list.size();i++){
             if(venue_list[i].city==city && venue_list[i].state==state && venue_list[i].postal==postal && venue_list[i].country==country){
-                // arr[i].display();
                 cnt++;
             }
         }
     }
     else if(city=="" && state=="" && postal=="" && country!=""){
-        // cout<<"4 condition satisfied"<<endl;
         for(int i=0;i<venue_list.size();i++){
             if(venue_list[i].country==country){
-                // arr[i].display();
                 cnt++;
             }
         }
@@ -574,12 +531,6 @@ void show_Venues(vector <Venue> &venue_list,string location){
 }
 
 void delete_Venue(vector <Venue> &venue_list,vector <Reservation>&reserves,vector <Congregation> &cong,string vname,string country_name){
-    // time_t now = time(nullptr);
-    // tm* localTime = localtime(&now);
-    // // string current_date="";
-    // int current_year=(localTime->tm_year + 1900);
-    // int current_month=(localTime->tm_mon + 1);
-    // int current_date=localTime->tm_mday;
     int exists=0;
     for(int i=0;i<venue_list.size();i++){
         if(venue_list[i].venue_name==vname && venue_list[i].country==country_name){
@@ -594,8 +545,6 @@ void delete_Venue(vector <Venue> &venue_list,vector <Reservation>&reserves,vecto
     }
     int found=0;
     for(int i=0;i<reserves.size();i++){
-        // cout<<reserves[i].venue_name<<" "<<vname<<endl;
-        // cout<<reserves[i].country_name<<" "<<country_name<<endl;
         if(reserves[i].venue_name==vname && reserves[i].country_name==country_name){
             found=1;
             break;
@@ -607,46 +556,6 @@ void delete_Venue(vector <Venue> &venue_list,vector <Reservation>&reserves,vecto
         // cout<<"Reservation still exists with respect to the congregation"<<endl;
         return;
     }
-    // for(int i=0;i<reserves.size();i++){
-    //     if(reserves[i].venue_name==vname && reserves[i].country_name==country_name){
-    //         int temp_start_year,temp_start__month,temp_start_date;
-    //         int temp_end_year,temp_end__month,temp_end_date;
-    //         string temp_string="";
-    //         temp_string+=(reserves[i].start_date[0]+reserves[i].start_date[1]+reserves[i].start_date[2]+reserves[i].start_date[3]);
-    //         temp_start_year=stoi(temp_string);
-    //         temp_string="";
-    //         temp_string=reserves[i].start_date[5]+reserves[i].start_date[6];
-    //         temp_start__month=stoi(temp_string);
-    //         temp_string="";
-    //         temp_string=reserves[i].start_date[8]+reserves[i].start_date[9];
-    //         temp_start_date=stoi(temp_string);
-    //         //some random values here
-    //         //hree
-    //         ///wg\w
-    //         //wgwreg/rg
-    //         temp_string="";
-    //         temp_string+=(reserves[i].end_date[0]+reserves[i].end_date[1]+reserves[i].end_date[2]+reserves[i].end_date[3]);
-    //         temp_start_year=stoi(temp_string);
-    //         temp_string="";
-    //         temp_string=reserves[i].end_date[5]+reserves[i].end_date[6];
-    //         temp_start__month=stoi(temp_string);
-    //         temp_string="";
-    //         temp_string=reserves[i].end_date[8]+reserves[i].end_date[9];
-    //         temp_start_date=stoi(temp_string);
-    //         int val=date_comparator(current_year,current_month,current_date,temp_start_year,temp_start__month,temp_start_date);
-    //         int val1=date_comparator(current_year,current_month,current_date,temp_end_year,temp_end__month,temp_end_date);
-    //         if(val==1 || val1==1){
-    //             found=1;
-    //             break;
-    //         }
-    //     }
-    // }
-    // if(found==1){
-    //     cout<<-1<<endl;
-    //     cout<<"Error"<<endl;
-    //     cout<<"there is still some resevation for the congrefation"<<endl;
-    //     return;
-    // }
     int ind1=0;
     for(int i=0;i<venue_list.size();i++){
         if(venue_list[i].venue_name==vname){
@@ -656,9 +565,6 @@ void delete_Venue(vector <Venue> &venue_list,vector <Reservation>&reserves,vecto
     }
     venue_list.erase(venue_list.begin()+ind1);
     int ind2=0;
-    // for(int i=0;i<cong.size();i++){
-    //     if(cong[i].c_venues==)
-    // }
     cout<<0<<endl;
     return;
 }
@@ -667,18 +573,15 @@ void delete_Venue(vector <Venue> &venue_list,vector <Reservation>&reserves,vecto
 void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string congregation_name,string vname,string country,string sdate,string start_time, string end_time,string ename){
     int found=0;
     int ind=0;
-    // cout<<start_time<<endl;
     for(int i=0;i<reserves.size();i++){
         if(reserves[i].congregation_name==congregation_name && reserves[i].venue_name==vname && reserves[i].country_name==country){
             found=1;
-            // ind=i;
             break;
         }
     }
     if(found==0){
         cout<<-1<<endl;
         cout<<"Error"<<endl;
-        // cout<<"Event cannot be added as there are no reservations for this venue"<<endl;
         return;
     }
     for(int i=0;i<venue_list.size();i++){
@@ -696,19 +599,15 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
         }
     }
     int dd1=dateDifference(venue_list[ind].cong[ind1].start_date,sdate);
-    // cout<<"FIRST CHECKPOINT"<<endl;
     if(dd1<0){
         cout<<-1<<endl;
         cout<<"Error"<<endl;
-        // cout<<"as the dates do match"<<endl;
         return;
     }
     int dd2=dateDifference(venue_list[ind].cong[ind1].end_date,sdate);
-    // cout<<"printing the value of temp "<<start_time<<endl;
     if(dd2>0){
         cout<<-1<<endl;
         cout<<"Error"<<endl;
-        // cout<<"as the dates do match"<<endl;
         return;
     }
     string temp="";
@@ -727,7 +626,6 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
     temp+=end_time[3];
     temp+=end_time[4];
     int end_min=stoi(temp);
-    // cout<<"FIRST CHECKPOINT CLEARED"<<endl;
     vector <int> tdiff=time_diff(start_hour,start_min,end_hour,end_min);
     int possible=1;
     if(tdiff[0]==0){
@@ -749,9 +647,6 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
             possible=0;
         }
     }
-    // else if(end_hour==0){
-
-    // }
     if(start_min%15!=0 || end_min%15!=0){
         possible=0;
     }
@@ -766,7 +661,6 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
     }
     for(int i=0;i<venue_list[ind].cong[ind1].events.size();i++){
         string temp1="";
-        // vector <int> v=date_diff(venue_list[ind].cong[ind1].events[i].date,sdate);
         temp1+=venue_list[ind].cong[ind1].events[i].start_time[0];
         temp1+=venue_list[ind].cong[ind1].events[i].start_time[1];
         int temp_hour=stoi(temp1);
@@ -782,10 +676,7 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
         temp1+=venue_list[ind].cong[ind1].events[i].end_time[3];
         temp1+=venue_list[ind].cong[ind1].events[i].end_time[4];
         int temp_end_min=stoi(temp1);
-        // if(v[0]==0 && v[1])
-        // cout<<venue_list[ind].cong[ind1].events[i].date<<" "<<sdate<<endl;
         int diff = dateDifference(venue_list[ind].cong[ind1].events[i].date,sdate);
-        // cout<<"the value of diff is: "<<diff<<endl;
         if(diff==-1){
             if(temp_hour==0 && temp_min<15 && end_hour==23 && end_min==45){
                 possible=0;
@@ -809,144 +700,67 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
         else if(diff==0){
             
             if(venue_list[ind].cong[ind1].events[i].date==sdate){
-                // cout<<"SECOND CHECKPOINT CLEATRED"<<endl;
-                // cout<<"SECOND CHECKPOINT CLEARED"<<endl;
                 vector <int> start_time_diff=time_diff(temp_hour,temp_min,start_hour,start_min);
                 vector <int> end_time_diff=time_diff(end_hour,end_min,temp_end_hour,temp_end_min);
                 vector <int> start_end_time_diff=time_diff(temp_end_hour,temp_end_min,start_hour,start_min);
                 vector <int> end_start_time_diff=time_diff(temp_hour,temp_min,end_hour,end_min);
                 vector <int> end_start_time_diff2=time_diff(end_hour,end_min,temp_hour,temp_min);
-                // if(venue_list[ind].cong[ind1].events[i].){
-                // }
-                // vector <int> v1=date_diff(venue_list[ind].cong[ind1].events[i].date,sdate);
-                // if(v1[0]==0 && v1[1]==0 && v1[2]==-1){
-
-                // }
-                // else if(v1[0]==0 && v1[1]==0 && v1[2]==1){
-
-                // }
-                // else if(v1[0]==0 && v1[1]==1 && v1[2]==){
-
-                // }
-                // else if(v1[0]==0 && v1[1]==-1 &&  ){
-
-                // }
                 if(start_time_diff[0]<0 ||  (start_time_diff[0]==0 &&  start_time_diff[1]<0)){
-                    // cout<<"CHECKER1"<<endl;
-                    // cout<<"CHECKER1"<<endl;
-                    // cout<<"CHECKER1"<<endl;
-                    // cout<<"CHECKER1"<<endl;
                     if(start_end_time_diff[0]>0 || (start_end_time_diff[0]==0 &&  start_end_time_diff[1]>0)){
-                        // cout<<"ABCD"<<endl;
                         possible=0;
                         break;
                     }
                 }
                 if(start_end_time_diff[0]<0 || (start_end_time_diff[0]==0 && start_end_time_diff[1]<0) || start_hour==0){
-                    // cout<<"CHECKER2"<<endl;
-                    // cout<<"CHECKER2"<<endl;
-                    // cout<<"CHECKER2"<<endl;
-                    // cout<<"CHECKER2"<<endl;
-                    // cout<<"hour:min of the end of the events: "<<temp_end_hour<<" "<<temp_end_min<<endl;
-                    // cout<<"hour:min of the starting event to be added: "<<start_hour<<" "<<start_min<<endl;
-                    
                     if(start_end_time_diff[0]==0 && venue_list[ind].cong[ind1].events[i].date==sdate){
                         int ins=start_end_time_diff[1]*-1;
                         if(ins<30){
                             possible=0;
-                            // cout<<"6789"<<endl;
                             break;
                         }
                     }
                     else if(start_end_time_diff[0]==-1){
-                        // int num;
-                        // num=temp_end_min%60;
-                        // vector <int> v=date_diff(venue_list[ind].cong[ind1].events[i].date,sdate);
                         if(temp_end_min==45 && start_min<15){
                             possible=0;
-                            // cout<<"98765"<<endl;
                             break;
                         }
                         else if(temp_end_min==30 && (start_min>30 && start_min<=0)){
                             possible=0;
-                            // cout<<"321"<<endl;
                             break;
                         }
                     }
-                    // else if(temp_end_hour==23 && start_hour==0 && venue_list[ind].cong[ind1].events[i].date!=sdate){
-                    //     vector <int> v=date_diff(venue_list[ind].cong[ind1].events[i].date,sdate);
-
-                    //     if(temp_end_min==45 && start_min<15 && v[0]==0 && v[1]==0 && v[2]==-1){
-                    //         possible=0;
-                    //         cout<<"4321"<<endl;
-                    //         break;
-                    //     }
-                    //     else if(temp_end_min==30 && (start_min>30 && start_min<59) && v[0]==0 && v[1]==0 && v[2]==0){
-                    //         possible=0;
-                    //         cout<<"123456"<<endl;
-                    //         break;
-                    //     }
-                    // }
                 }
                 if(end_start_time_diff2[0]<0 || (end_start_time_diff2[0]==0 && end_start_time_diff2[1]<0)){   
-                    // cout<<"CHECKER3"<<endl;
-                    // cout<<"CHECKER3"<<endl;
-                    // cout<<"CHECKER3"<<endl;
-                    // cout<<"CHECKER3"<<endl;
                     if(end_start_time_diff2[0]==0){
                         int ins=end_start_time_diff2[1]*-1;
                         if(ins<30){
                             possible=0;
-                            // cout<<"123"<<endl;
                             break;
                         }
                     }
                     if(end_min==45 && end_start_time_diff2[0]==-1){
                         if(temp_min<15){
                             possible=0;
-                            // cout<<"1234"<<endl;
                             break;
                         }
                     }
                 }
                 if(end_time_diff[0]<0 || (end_time_diff[0]==0 && end_time_diff[1]<0)){
-                    // cout<<"CHECKER4"<<endl;
-                    // cout<<"CHECKER4"<<endl;
-                    // cout<<"CHECKER4"<<endl;
-                    // cout<<"CHECKER4"<<endl;
                     if(venue_list[ind].cong[ind1].events[i].date==sdate && (end_start_time_diff[0]<0 || (end_start_time_diff[0]==0 && end_start_time_diff[1]<0))){
                         possible=0;
-                        // cout<<"printing the dates"<<endl;
-                        // cout<<"printing the date that aldready exists: "<<venue_list[ind].cong[ind1].events[i].date<<endl;
-                        // cout<<"printing the date to be added: "<<sdate<<endl;
-                        // cout<<"-------------------------------------------------"<<endl;
-                        // cout<<temp_hour<<" "<<temp_min<<" "<<start_hour<<" "<<start_min<<endl;
-                        // cout<<end_hour<<" "<<end_min<<" "<<temp_end_hour<<" "<<temp_end_min<<endl;
-                        // cout<<temp_end_hour<<" "<<temp_end_min<<" "<<start_hour<<" "<<start_min;
-                        // cout<<"timing of the event to be added: "<<start_hour<<" "<<start_min<<" "<<end_hour<<" "<<end_min<<endl;
-                        // cout<<"the timing of the events that aldready exists: "<<temp_hour<<" "<<temp_min<<" "<<temp_end_hour<<" "<<temp_end_min<<endl;
-                        // cout<<end_hour<<" "<<end_min<<" "<<temp_end_hour<<" "<<temp_end_min<<endl;
-                        // cout<<temp_hour<<" "<<temp_min<<" "<<end_hour<<" "<<end_min<<endl;
-                        // cout<<"12345"<<endl;
                         break;
                     }
                 }
             }
         }
     }
-    // if(start_hour>end_hour){
-    //     possible=2;
-    //     // Event ev();
-    // }
     if(possible==0){
         cout<<-1<<endl;
         cout<<"Error"<<endl;
         // cout<<"some of the dates are time interval are overlapping"<<endl;
         return;
     }
-    // venue_list[ind].cong[ind1].events
     int year,month,date;
-    // cout<<"THIRD CHECKPOINT"<<endl;
     string s="";
     s+=sdate[0];
     s+=sdate[1];
@@ -961,8 +775,6 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
     s+=sdate[8];
     s+=sdate[9];
     date=stoi(s);
-    // cout<<"THIRD CHECKPOINT CLEARED"<<endl;
-    // if(leap_year_checker(year)==1)
     if(month==2){
         if(leap_year_checker(year)==1){
             if(date>28 || date<1){
@@ -991,7 +803,6 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
     for(int i=0;i<venue_list[ind].cong[ind1].events.size();i++){
         string temp_string_date=venue_list[ind].cong[ind1].events[i].date;
         int temp_year,temp_month,temp_date;
-        // cout<<"FOURTH CHECKPOINT"<<endl;
         string t="";
         t+=temp_string_date[0];
         t+=temp_string_date[1];
@@ -1006,11 +817,7 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
         t+=temp_string_date[8];
         t+=temp_string_date[9];
         temp_date=stoi(t);
-        // cout<<"FOURTH CHECKPOINT CLEARED"<<endl;
         int val=date_comparator(temp_year,temp_month,temp_date,year,month,date);
-        // if(start_hour==00){
-
-        // }
         if(val==1){
             continue;
         }
@@ -1019,8 +826,6 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
             break;    
         }
         else if(val==0){
-            // val==0;
-            // cout<<"FIFTH CHECKPOINT"<<endl;
             string temp1="";
             temp1+=venue_list[ind].cong[ind1].events[i].start_time[0];
             temp1+=venue_list[ind].cong[ind1].events[i].start_time[1];
@@ -1037,7 +842,6 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
             temp1+=venue_list[ind].cong[ind1].events[i].end_time[3];
             temp1+=venue_list[ind].cong[ind1].events[i].end_time[4];
             int temp_end_min=stoi(temp1);
-            // cout<<"FIFTH CHECKPOINT CLEARED"<<endl;
             vector <int>diff=time_diff(temp_end_hour,temp_end_min,start_hour,start_min);
             if(diff[0]<0 || (diff[0]==0 && diff[1]<0)){
                 continue;
@@ -1049,21 +853,11 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
         }
     }
 
-    //adding part begin done here
-    //------------------------------------------
     if(ind3==venue_list[ind].cong[ind1].events.size()){
         if(possible==1){
             Event ev1(ename,vname,country,sdate,start_time,end_time);
             venue_list[ind].cong[ind1].events.push_back(ev1);
-            // cout<<"event added"<<endl;
-            // Event ev2(ename,);
         }
-        // else if(possible==2){
-        //     Event ev1(ename,vname,country,sdate,start_time,"23:59");
-        //     Event ev2(ename,vname,country,sdate,"00:00",end_time);
-        //     venue_list[ind].cong[ind1].events.push_back(ev1);
-        //     venue_list[ind].cong[ind1].events.push_back(ev2);
-        // }
     }
     else{
         if(possible==1){
@@ -1071,27 +865,17 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
             // cout<<"Event added"<<endl;
             venue_list[ind].cong[ind1].events.insert(venue_list[ind].cong[ind1].events.begin()+ind3,ev1);
         }
-        // else if(possible==2){
-        //     Event ev1(ename,vname,country,sdate,start_time,"23:59");
-        //     Event ev2(ename,vname,country,sdate,"00:00",end_time);
-        //     venue_list[ind].cong[ind1].events.insert(venue_list[ind].cong[ind1].events.begin()+ind3,ev1);
-        //     venue_list[ind].cong[ind1].events.insert(venue_list[ind].cong[ind1].events.begin()+ind3+1,ev2);
-
-        // }
     }
     cout<<0<<endl;
     return;
 }
 
 void delete_Event(vector <Venue> &venue_list,string congregation_name,string vname, string country,string date,string from_time, string ename){
-    // cout<<"INSIDE THE DELETE EVENT FUNCTION NOW"<<endl;
     int found_venue=0;
     int found_congregation=0;
     int ind=0;
     int ind1=0;
     for(int i=0;i<venue_list.size();i++){
-        // cout<<venue_list[i].venue_name<<" "<<vname<<endl;
-        // cout<<venue_list[i].country<<" "<<country<<endl;
         if(venue_list[i].venue_name==vname && venue_list[i].country==country){
             found_venue=1;
             ind=i;
@@ -1105,7 +889,6 @@ void delete_Event(vector <Venue> &venue_list,string congregation_name,string vna
         return;
     }
     for(int i=0;i<venue_list[ind].cong.size();i++){
-        // cout<<venue_list[ind].cong[i].name<<" :: "<<congregation_name<<endl;
         if(venue_list[ind].cong[i].name==congregation_name){
             found_congregation=1;
             ind1=i;
@@ -1300,7 +1083,6 @@ void show_Calendar(vector <Reservation>&reserves,vector <Venue>&venue_list,strin
     string end_date_congregation="";
     int ind1=0;
     for(int i=0;i<venue_list[ind].cong.size();i++){
-        // if(venue_list[ind].venue_name==venue_name && venue_list[ind].cong)
         if(venue_list[ind].cong[i].name==congregation_name){
             ind1=i;
             break;
@@ -1311,26 +1093,6 @@ void show_Calendar(vector <Reservation>&reserves,vector <Venue>&venue_list,strin
 
     int final_counter=0;
     final_counter=venue_list[ind].cong[ind1].events.size();
-    // for(int i=0;i<venue_list[ind].cong.size();i++){
-    //     // cout<<venue_list[ind].cong[i].name<<endl;
-    //     // cout<<"Now going to print the corresponding events"<<endl;
-    //     vector <string> dates;
-    //     for(int j=0;j<venue_list[ind].cong[i].events.size();j++){
-    //         int present=0;
-    //         for(int k=0;k<dates.size();k++){
-    //             if(dates[k]==venue_list[ind].cong[i].events[j].date){
-    //                 present=1;
-    //                 break;
-    //             }
-    //         }
-    //         if(present==0){
-    //             dates.push_back(venue_list[ind].cong[i].events[j].date);
-    //         }
-    //     }
-        // cout<<"printing the dates: "<<endl;
-        // for(int i=0;i<dates.size();i++){
-        //     cout<<dates[i]<<" ";
-        // }
     vector <string> dates;
     int start_year,start_month,start_date;
     int end_year,end_month,end_date;
@@ -1362,7 +1124,6 @@ void show_Calendar(vector <Reservation>&reserves,vector <Venue>&venue_list,strin
     temp+=end_date_congregation[8];
     temp+=end_date_congregation[9];
     end_date=stoi(temp);
-    // string ndate;
     string current_date=start_date_congregation;
     while(true){
         int temp_year,temp_month,temp_date;
@@ -1380,7 +1141,6 @@ void show_Calendar(vector <Reservation>&reserves,vector <Venue>&venue_list,strin
         st+=current_date[8];
         st+=current_date[9];
         temp_date=stoi(st);
-        // cout<<temp_year<<" "<<temp_month<<" "<<temp_date<<" "<<end_year<<" "<<end_month<<" "<<end_date<<endl;
         if(date_comparator(temp_year,temp_month,temp_date,end_year,end_month,end_date)==1 || date_comparator(temp_year,temp_month,temp_date,end_year,end_month,end_date)==0){
             dates.push_back(current_date);
         }
@@ -1388,34 +1148,7 @@ void show_Calendar(vector <Reservation>&reserves,vector <Venue>&venue_list,strin
             break;
         }
         current_date=next_date(current_date);
-        // cout<<"received from the funciton: "<<current_date<<endl;
     }
-
-    // for(int m=0;m<dates.size();m++){
-    //     // cout<<dates[m]<<" ";
-    //     int count=0;
-    //     for(int n=0;n<venue_list[ind].cong[i].events.size();n++){
-    //         if(venue_list[ind].cong[i].events[n].date==dates[m]){
-    //             count++;
-    //         }
-    //     }
-    //     final_counter+=count;
-    //     // cout<<count<<endl;
-    //     // if(count==0){
-    //     //     cout<<"NULL"<<endl;
-    //     // }
-    //     // else{
-    //     //     for(int n=0;n<venue_list[ind].cong[i].events.size();n++){
-    //     //         if(venue_list[ind].cong[i].events[n].date==dates[m]){
-    //     //             cout<<venue_list[ind].cong[i].events[n].event_name<<" "<<venue_list[ind].cong[i].events[n].start_time<<" "<<venue_list[ind].cong[i].events[n].end_time<<endl;
-    //     //         }
-    //     //     }   
-    //     // }
-    // }
-    // }
-
-
-
 
     cout<<final_counter<<endl;
 
@@ -1618,14 +1351,6 @@ void reserve_Venue(vector <Reservation>&reserves,vector <Congregation>&congregat
             int_end_year=stoi(temp_end_year);
             int_end_month=stoi(temp_end_month);
             int_end_date=stoi(temp_end_date);
-            // cout<<"start date: "<<reserves[i].start_date<<endl;
-            // cout<<"end date: "<<reserves[i].end_date<<endl;
-            // cout<<"start date: "<<year<<" "<<month<<" "<<date<<endl;
-            // cout<<"end date: "<<end_year<<" "<<end_month<<" "<<end_date<<endl;
-            // cout<<"printing the start date of reservation: "<<int_year<<" "<<int_month<<" "<<int_date<<endl;
-            // cout<<"printing the end date of the reservation:  "<<int_end_year<<" "<<int_end_month<<" "<<int_end_date<<endl;
-            // cout<<"printing the start date to be reseved: "<<year<<" "<<month<<" "<<date<<endl;
-            // cout<<"printing the end date to be reserved: "<<end_year<<" "<<end_month<<" "<<end_date<<endl;
             int a=date_comparator(year,month,date,int_year,int_month,int_date);
             int b=date_comparator(end_year,end_month,end_date,int_end_year,int_end_month,int_end_date);
             int c=date_comparator(end_year,end_month,end_date,int_year,int_month,int_date);
@@ -1667,7 +1392,6 @@ void reserve_Venue(vector <Reservation>&reserves,vector <Congregation>&congregat
     Reservation res(vname,congregation_name,country,congregation_list[ind].start_date,congregation_list[ind].end_date,capa,l); 
     reserves.push_back(res);
     int ind1=0;
-    // Congregation c(congregation_name,congre);
     for(int i=0;i<venue_list.size();i++){
         if(venue_list[i].venue_name==vname){
             ind1=i;
@@ -1676,12 +1400,9 @@ void reserve_Venue(vector <Reservation>&reserves,vector <Congregation>&congregat
     }
     for(int i=0;i<congregation_list.size();i++){
         if(congregation_list[i].name==congregation_name){
-            // Congregation c(congregation_name,);
             venue_list[ind1].cong.push_back(congregation_list[i]);
         }
     } 
-    // venue_list.push_back();
-    // vens.push_back();
     cout<<0<<endl;
     return;
 }
@@ -1727,11 +1448,6 @@ void free_Venue(vector <Venue> &venue_list,vector <Reservation>&reserves,string 
 
 void show_reserve(vector <Congregation>& congregation_list,vector <Reservation> &reserves,string congregation_name){
     int cnt=0;
-    // cout<<"Printing the total number of reservations present"<<reserves.size()<<endl;
-    // for(int i=0;i<reserves.size();i++){
-    //     reserves[i].display();
-    // }
-    // cout<<"the above was printed just for the purpose of cheking"<<endl;
     int found=0;
     for(int i=0;i<congregation_list.size();i++){
         if(congregation_list[i].name==congregation_name){
@@ -1840,9 +1556,6 @@ int main(int argc, char *argv[]){
             command+=line[ind];
             ind++;
         }
-        // cout<<"command: "<<command<<endl;
-        // return 0;
-        // cout<<line<<endl;
         if(command=="" || command==" "){
             cout<<-1<<endl;
             cout<<"error"<<endl;
@@ -1850,7 +1563,6 @@ int main(int argc, char *argv[]){
         }
         else if(command=="End"){
             // cout<<"exiting"<<endl;
-            // cout<<line<<endl;
             break;
         }
         else if(command=="addCongregation"){
@@ -1891,8 +1603,6 @@ int main(int argc, char *argv[]){
                 congregation_type+=line[ind];
                 ind++;
             }
-            // cout<<"checker"<<endl;
-            // cout<<line[ind]<<endl;
             if(ind>=line.size()){
                 cout<<-1<<endl;
                 // cout<<"Please enclose in double qoutes"<<endl;
@@ -1901,9 +1611,7 @@ int main(int argc, char *argv[]){
             }
             // cout<<"congregation_type: "<<congregation_type<<endl;
             ind++;
-            // cout<<line[ind]<<endl;
             ind++;
-            // cout<<line[ind]<<endl;
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 // cout<<"please enclose the date in double qoutes"<<endl;
@@ -1953,9 +1661,6 @@ int main(int argc, char *argv[]){
                 // cout<<"congragation aldready exists"<<endl;
                 continue;
             }
-            // cout<<"WHILE ADDING CONGREGATION CHECKIGN THE VALUE OF THE END_DATE THAT WE ARE SONDING TO THE FUNCITON"<<endl;
-            // cout<<"CHECKER: "<<end_date<<endl;
-            // cout<<line<<endl;
             int val=start_end_verifier(start_date,end_date);
             if(val==-1){
                 cout<<-1<<endl;
@@ -1963,8 +1668,6 @@ int main(int argc, char *argv[]){
                 continue;
             }
             add_Congregation(congregation_list,congregation_name,congregation_type,start_date,end_date);
-            // cout<<endl<<endl<<endl;
-            // vector <Congregation>&congregation_list,congregation_name, congregation_type,start_date,end_date
         }
         else if(command=="deleteCongregation"){
             if(ind>=line.size()){
@@ -1981,7 +1684,6 @@ int main(int argc, char *argv[]){
             }
             // cout<<line<<endl;
             delete_Congregation(congregation_list,reserves,congregation_name);
-            // vector <Congregation>&arr,vector <Reservation>&reserves,congregation_name
         }
         else if(command=="showCongregations"){
             // cout<<line<<endl;
@@ -2031,9 +1733,7 @@ int main(int argc, char *argv[]){
                 capacity+=line[ind];
                 ind++;
             }
-            // cout<<line<<endl;
             add_Venue(venue_list,vname,location,capacity);
-            // cout<<endl<<endl<<endl;
         }
         else if(command=="deleteVenue"){
             if(ind==line.size()){
@@ -2067,11 +1767,7 @@ int main(int argc, char *argv[]){
                 country+=line[ind];
                 ind++;
             }
-            // vector <Venue> &venue_list,vector <Reservation>&reserves,vector <Congregation> &cong,string vname,string country_name
-            // cout<<line<<endl<<endl<<endl<<endl;
-            // cout<<line<<endl;
             delete_Venue(venue_list,reserves,congregation_list,vname,country);
-            // cout<<endl<<endl<<endl;
         }
         else if(command=="showVenues"){
             if(ind>=line.size()){
@@ -2085,10 +1781,7 @@ int main(int argc, char *argv[]){
                 location+=line[ind];
                 ind++;
             }
-            // cout<<line<<endl<<endl<<endl<<endl;
-            // cout<<line<<endl;
             show_Venues(venue_list,location);
-            // cout<<endl<<endl<<endl;
         }
         else if(command=="reserveVenue"){
             ind++;
@@ -2141,11 +1834,7 @@ int main(int argc, char *argv[]){
                 congregation_name+=line[ind];
                 ind++;
             }
-            // cout<<line<<endl<<endl<<endl<<endl;
-            // cout<<line<<endl;
             reserve_Venue(reserves,congregation_list,venue_list,vname,country,congregation_name);
-            // cout<<endl<<endl<<endl;
-            // vector <Reservation>&reserves,vector <Congregation>&arr,vector <Venue>&cong,string vname,string country,string congregation_name
         }
         else if(command=="freeVenue"){
             ind++;
@@ -2198,11 +1887,7 @@ int main(int argc, char *argv[]){
                 congregation_name+=line[ind];
                 ind++;
             }
-            // cout<<line<<endl<<endl<<endl<<endl;
-            // cout<<line<<endl;
             free_Venue(venue_list,reserves,congregation_name,vname,country);
-            // cout<<endl<<endl<<endl;
-            // vector <Venue> &venue_list,vector <Reservation>&reserves,string congregation_name,string vname,string country
         }
         else if(command=="showReserved"){
             ind++;
@@ -2223,10 +1908,7 @@ int main(int argc, char *argv[]){
                 // cout<<"close the name with double qoutes"<<endl;
                 continue;
             }
-            // cout<<line<<endl<<endl<<endl<<endl;
-            // cout<<line<<endl;
             show_reserve(congregation_list,reserves,congregation_name);
-            // cout<<endl<<endl<<endl;
         }
         else if(command=="addEvent"){
             ind++;
@@ -2287,7 +1969,6 @@ int main(int argc, char *argv[]){
                 // cout<<"close the name with double qoutes"<<endl;
                 continue;
             }
-            // cout<<"coutnry: "<<country<<endl;
             ind++;
             ind++;
             ind++;
@@ -2295,7 +1976,6 @@ int main(int argc, char *argv[]){
                 sdate+=line[ind];
                 ind++;
             }
-            // cout<<"date: "<<sdate<<endl;
             ind++;
             ind++;
             ind++;
@@ -2303,7 +1983,6 @@ int main(int argc, char *argv[]){
                 start_time+=line[ind];
                 ind++;
             }
-            // cout<<"start time: "<<start_time<<endl;
             ind++;
             ind++;
             ind++;
@@ -2311,7 +1990,6 @@ int main(int argc, char *argv[]){
                 end_time+=line[ind];
                 ind++;
             }
-            // cout<<"end time: "<<end_time<<endl;
             ind++;
             ind++;
             if(ind==line.size()){
@@ -2337,37 +2015,13 @@ int main(int argc, char *argv[]){
                 // cout<<"Close the event name with double qoutes"<<endl;
                 continue;
             }
-            // cout<<"event name: "<<ename<<endl;
-            // cout<<"congregation_name"<<congregation_name<<endl;
-            // cout<<"venue_name"<<vname<<endl;
-            // cout<<"country: "<<country<<endl;
-            // cout<<"date: "<<sdate<<endl;
-            // cout<<"start time: "<<start_time<<endl;
-            // cout<<"end time: "<<end_time<<endl;
-            // cout<<"event name: "<<ename<<endl;
-            // cout<<line<<endl<<endl<<endl<<endl;
-            // cout<<line<<endl;
             int val=date_verifier(sdate);
             if(val==-1){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
                 continue;
             }
-            add_Event(venue_list,reserves,congregation_name,vname,country,sdate,start_time,end_time,ename);
-            // cout<<endl<<endl<<endl;
-            // vector <Venue> &venue_list,vector <Reservation>&reserves,string congregation_name,string vname,string country,string sdate,string start_time, string end_time,string ename
-            // if(line[ind]!='\"'){
-            //     cout<<-1<<endl;
-            //     cout<<"Error"<<endl;
-            //     cout<<"Please enclose the congregation name in double qoutes"<<endl;
-            //     continue;
-            // }
-            // ind++;
-            // while(ind<line.size()  && line[ind]!='\"'){
-            //     country+=line[ind];
-            //     ind++;
-            // }
-        }
+            add_Event(venue_list,reserves,congregation_name,vname,country,sdate,start_time,end_time,ename);        }
         else if(command=="deleteEvent"){
             // cout<<"NOW IN THE DELETE EVENT INPUT TAKER"<<endl;
             ind++;
@@ -2388,7 +2042,6 @@ int main(int argc, char *argv[]){
                 // cout<<"close the name with double qoutes"<<endl;
                 continue;
             }
-            // cout<<"CONGREGATION NAME: "<<congregation_name<<endl;
             ind++;
             ind++;
             if(line[ind]!='\"'){
@@ -2408,7 +2061,6 @@ int main(int argc, char *argv[]){
                 // cout<<"close the name with double qoutes"<<endl;
                 continue;
             }
-            // cout<<"VENUE NAME: "<<vname<<endl;
             ind++;
             ind++;
             if(line[ind]!='\"'){
@@ -2428,7 +2080,6 @@ int main(int argc, char *argv[]){
                 // cout<<"close the name with double qoutes"<<endl;
                 continue;
             }
-            // cout<<"COUTNRY NAME: "<<country<<endl;
             ind++;
             ind++;
             ind++;
@@ -2436,7 +2087,6 @@ int main(int argc, char *argv[]){
                 sdate+=line[ind];
                 ind++;
             }
-            // cout<<"SDATE: "<<sdate<<endl;
             ind++;
             ind++;
             ind++;
@@ -2444,7 +2094,6 @@ int main(int argc, char *argv[]){
                 start_time+=line[ind];
                 ind++;
             }
-            // cout<<"START_TIME: "<<start_time<<endl;
             ind++;
             ind++;
             if(line[ind]!='\"'){
@@ -2464,36 +2113,13 @@ int main(int argc, char *argv[]){
                 // cout<<"Please close the event name with double qoutes"<<endl;
                 continue;
             }
-            // cout<<"EVENT NAME: "<<ename<<endl;
-            // ind++;
-            // ind++;
-            // ind++;
-            // if(line[ind]!='\"'){
-            //     cout<<-1<<endl;
-            //     cout<<"Error"<<endl;
-            //     cout<<"start the event name with double qoutes"<<endl;
-            //     continue;
-            // }
-            // ind++;
-            // while(ind<line.size() && line[ind]!='\"'){
-            //     ename+=line[ind];
-            //     ind++;
-            // }
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
                 // cout<<"Please close the event name with double qoutes"<<endl;
                 continue;
             }
-            // cout<<ename<<endl;
-            // cout<<"EVENT NAME: "<<ename<<endl;
-            // cout<<line<<endl<<endl<<endl<<endl;
-            // cout<<line<<endl;
             delete_Event(venue_list,congregation_name,vname,country,sdate,start_time,ename);
-            // vector <Venue> &venue_list,string congregation_name,string vname, string country,string date,string from_time, string ename
-            // cout<<endl<<endl<<endl;
-            // cout<<"DELETE EVENT FUNCTION"<<endl;
-            // vector <Venue> &venue_list,string congregation_name,string vname, string country,string date,string from_time, string ename
         }
         else if(command=="showEvents"){
             ind++;
@@ -2552,12 +2178,7 @@ int main(int argc, char *argv[]){
                 // cout<<"Please close the date in double qoutes"<<endl;
                 continue;
             }
-            // delete_Event();
-            // cout<<line<<endl<<endl<<endl<<endl;
-            // cout<<line<<endl;
             show_Events(venue_list,vname,country,sdate);
-            // cout<<endl<<endl<<endl;
-            // vector <Venue> &venue_list,string venue_name,string country,string date
         }
         else if(command=="showCalendar"){
             ind++;
@@ -2616,11 +2237,7 @@ int main(int argc, char *argv[]){
                 // cout<<"Please close the date in double qoutes"<<endl;
                 continue;
             }
-            // cout<<line<<endl<<endl<<endl<<endl;
-            // cout<<line<<endl;
             show_Calendar(reserves,venue_list,congregation_name,vname,country);
-            // cout<<endl<<endl<<endl;
-            // vector <Reservation>&reserves,vector <Venue>venue_list,string congregation_name,string venue_name,string country
         }
         else{
             cout<<-1<<endl;
