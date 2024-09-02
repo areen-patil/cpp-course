@@ -544,7 +544,7 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
     if(found==0){
         cout<<"-1\nError"<<endl;
         // cout<<"Error"<<endl;
-        // cout<<"the event cannot be added without reservation for the venue and the congregation"<<endl;
+        cout<<"the event cannot be added without reservation for the venue and the congregation"<<endl;
         return;
     }
     for(int i=0;i<venue_list.size();i++){
@@ -721,7 +721,7 @@ void add_Event(vector <Venue> &venue_list,vector <Reservation>&reserves,string c
     if(possible==0){
         cout<<"-1\nError"<<endl;
         // cout<<"Error"<<endl;
-        // cout<<"some of the dates are time interval are overlapping"<<endl;
+        cout<<"some of the dates are time interval are overlapping"<<endl;
         return;
     }
     int year,month,date;
@@ -849,7 +849,7 @@ void delete_Event(vector <Venue> &venue_list,string congregation_name,string vna
     if(found_venue==0){
         cout<<"-1\nError"<<endl;
         // cout<<"Error"<<endl;
-        // cout<<"Venue not found"<<endl;
+        cout<<"Venue not found"<<endl;
         return;
     }
     for(int i=0;i<venue_list[ind].cong.size();i++){ //check if the congregation exists or not
@@ -862,7 +862,7 @@ void delete_Event(vector <Venue> &venue_list,string congregation_name,string vna
     if(found_congregation==0){
         cout<<"-1\nError"<<endl;
         // cout<<"Error"<<endl;
-        // cout<<"Congregation not found"<<endl;
+        cout<<"Congregation not found"<<endl;
         return;
     }
     int found_event=0;
@@ -877,7 +877,7 @@ void delete_Event(vector <Venue> &venue_list,string congregation_name,string vna
     if(found_event==0){
         cout<<"-1\nError"<<endl;
         // cout<<"Error"<<endl;
-        // cout<<"Event not found"<<endl;
+        cout<<"Event not found"<<endl;
         return;
     }
     venue_list[ind].cong[ind1].events.erase(venue_list[ind].cong[ind1].events.begin()+ind2);  //delete the events from its index in the vector
@@ -1487,7 +1487,7 @@ int main(int argc, char *argv[]){
     string line;
     while(true){
         getline(*input_stream,line);
-        // line=remove_white_spaces(line);
+        line=remove_white_spaces(line);
         string command="";
         string congregation_name="";
         string congregation_type="";
@@ -1523,14 +1523,14 @@ int main(int argc, char *argv[]){
             continue;
         }
         else if(command=="End"){
-            // cout<<"exiting"<<endl;
+            cout<<"exiting"<<endl;
             break;
         }
         else if(command=="addCongregation"){
             if(ind>=line.size()){
-                // cout<<"Please provide other info to add the congregation"<<endl;
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
+                cout<<"Please provide other info to add the congregation"<<endl;
                 continue;
             }
             ind++;
@@ -1546,8 +1546,8 @@ int main(int argc, char *argv[]){
             }
             if(ind==line.size()){
                 cout<<-1<<endl;
-                // cout<<"Please close the name with a doubel qoutes and enter the command in the correct format"<<endl;
                 cout<<"Error"<<endl;
+                cout<<"Please close the name with a doubel qoutes and enter the command in the correct format"<<endl;
                 continue;
             }
             // cout<<"congregation_name: "<<congregation_name<<endl;
@@ -1555,8 +1555,8 @@ int main(int argc, char *argv[]){
             ind++;
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
-                // cout<<"Please enclose in double qoutes"<<endl;
                 cout<<"Error"<<endl;
+                cout<<"Please enclose in double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1566,8 +1566,8 @@ int main(int argc, char *argv[]){
             }
             if(ind>=line.size()){
                 cout<<-1<<endl;
-                // cout<<"Please enclose in double qoutes"<<endl;
                 cout<<"Error"<<endl;
+                cout<<"Please enclose in double qoutes"<<endl;
                 continue;
             }
             // cout<<"congregation_type: "<<congregation_type<<endl;
@@ -1575,8 +1575,8 @@ int main(int argc, char *argv[]){
             ind++;
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
-                // cout<<"please enclose the date in double qoutes"<<endl;
                 cout<<"Error"<<endl;
+                cout<<"please enclose the date in double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1586,8 +1586,8 @@ int main(int argc, char *argv[]){
             }
             if(ind==line.size()){
                 cout<<-1<<endl;
-                // cout<<"Please enclose in double qoutes"<<endl;
                 cout<<"Error"<<endl;
+                cout<<"Please enclose in double qoutes"<<endl;
                 continue;
             }
             // cout<<"start_date: "<<start_date<<endl;
@@ -1595,8 +1595,8 @@ int main(int argc, char *argv[]){
             ind++;
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
-                // cout<<"please enclose the date in double qoutes"<<endl;
                 cout<<"Error"<<endl;
+                cout<<"please enclose the date in double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1606,8 +1606,8 @@ int main(int argc, char *argv[]){
             }
             if(ind>=line.size()){
                 cout<<-1<<endl;
-                // cout<<"please enclose the date in double qoutes"<<endl;
                 cout<<"Error"<<endl;
+                cout<<"please enclose the date in double qoutes"<<endl;
                 continue;
             }
             int found=0;
@@ -1619,7 +1619,7 @@ int main(int argc, char *argv[]){
             if(found==1){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"congragation aldready exists"<<endl;
+                cout<<"congragation aldready exists"<<endl;
                 continue;
             }
             int val=start_end_verifier(start_date,end_date);
@@ -1632,9 +1632,9 @@ int main(int argc, char *argv[]){
         }
         else if(command=="deleteCongregation"){
             if(ind>=line.size()){
-                // cout<<"Please provide other info to add the congregation"<<endl;
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
+                cout<<"Please provide other info to add the congregation"<<endl;
                 continue;
             }
             ind++;
@@ -1655,7 +1655,7 @@ int main(int argc, char *argv[]){
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please start the venue name with a double qoutes"<<endl;
+                cout<<"Please start the venue name with a double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1666,7 +1666,7 @@ int main(int argc, char *argv[]){
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please enter the correct format for the input"<<endl;
+                cout<<"Please enter the correct format for the input"<<endl;
                 continue;
             }
             ind++;
@@ -1674,7 +1674,7 @@ int main(int argc, char *argv[]){
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please the location string with a double qoutes"<<endl;
+                cout<<"Please the location string with a double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1685,7 +1685,7 @@ int main(int argc, char *argv[]){
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please close the double qoutes and enter the cpapcity"<<endl;
+                cout<<"Please close the double qoutes and enter the cpapcity"<<endl;
                 continue;
             }
             ind++;
@@ -1700,14 +1700,14 @@ int main(int argc, char *argv[]){
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please enter venue name and country name"<<endl;
+                cout<<"Please enter venue name and country name"<<endl;
                 continue;
             }
             ind++;
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please enclose the venue name in double qoutes"<<endl;
+                cout<<"Please enclose the venue name in double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1720,7 +1720,7 @@ int main(int argc, char *argv[]){
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please enclose the venue name in double qoutes"<<endl;
+                cout<<"Please enclose the venue name in double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1734,7 +1734,7 @@ int main(int argc, char *argv[]){
             if(ind>=line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please give the location string also"<<endl;
+                cout<<"Please give the location string also"<<endl;
                 continue;
             }
             ind++;
@@ -1749,7 +1749,7 @@ int main(int argc, char *argv[]){
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please start with the double qoutes"<<endl;
+                cout<<"Please start with the double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1760,7 +1760,7 @@ int main(int argc, char *argv[]){
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"close the name with double qoutes"<<endl;
+                cout<<"close the name with double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1768,7 +1768,7 @@ int main(int argc, char *argv[]){
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please enclose the country name in double qoutes"<<endl;
+                cout<<"Please enclose the country name in double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1779,7 +1779,7 @@ int main(int argc, char *argv[]){
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"close the name with double qoutes"<<endl;
+                cout<<"close the name with double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1787,7 +1787,7 @@ int main(int argc, char *argv[]){
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please enclose the congregation name in double qoutes"<<endl;
+                cout<<"Please enclose the congregation name in double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1802,7 +1802,7 @@ int main(int argc, char *argv[]){
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please start with the double qoutes"<<endl;
+                cout<<"Please start with the double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1813,7 +1813,7 @@ int main(int argc, char *argv[]){
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"close the name with double qoutes"<<endl;
+                cout<<"close the name with double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1821,7 +1821,7 @@ int main(int argc, char *argv[]){
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please enclose the country name in double qoutes"<<endl;
+                cout<<"Please enclose the country name in double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1832,7 +1832,7 @@ int main(int argc, char *argv[]){
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"close the name with double qoutes"<<endl;
+                cout<<"close the name with double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1840,7 +1840,7 @@ int main(int argc, char *argv[]){
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please enclose the congregation name in double qoutes"<<endl;
+                cout<<"Please enclose the congregation name in double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1855,7 +1855,7 @@ int main(int argc, char *argv[]){
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please start with the double qoutes"<<endl;
+                cout<<"Please start with the double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1866,7 +1866,7 @@ int main(int argc, char *argv[]){
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"close the name with double qoutes"<<endl;
+                cout<<"close the name with double qoutes"<<endl;
                 continue;
             }
             show_reserve(congregation_list,reserves,congregation_name);
@@ -1876,7 +1876,7 @@ int main(int argc, char *argv[]){
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please start with the double qoutes"<<endl;
+                cout<<"Please start with the double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1887,7 +1887,7 @@ int main(int argc, char *argv[]){
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"close the name with double qoutes"<<endl;
+                cout<<"close the name with double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1895,7 +1895,7 @@ int main(int argc, char *argv[]){
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please enclose the country name in double qoutes"<<endl;
+                cout<<"Please enclose the country name in double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1906,7 +1906,7 @@ int main(int argc, char *argv[]){
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"close the name with double qoutes"<<endl;
+                cout<<"close the name with double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1914,7 +1914,7 @@ int main(int argc, char *argv[]){
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please enclose the congregation name in double qoutes"<<endl;
+                cout<<"Please enclose the congregation name in double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1925,7 +1925,7 @@ int main(int argc, char *argv[]){
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"close the name with double qoutes"<<endl;
+                cout<<"close the name with double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1954,13 +1954,13 @@ int main(int argc, char *argv[]){
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please give event name"<<endl;
+                cout<<"Please give event name"<<endl;
                 continue;
             }
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please enclose the event name in double qoutes"<<endl;
+                cout<<"Please enclose the event name in double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1971,7 +1971,7 @@ int main(int argc, char *argv[]){
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Close the event name with double qoutes"<<endl;
+                cout<<"Close the event name with double qoutes"<<endl;
                 continue;
             }
             int val=date_verifier(sdate);
@@ -1983,11 +1983,12 @@ int main(int argc, char *argv[]){
             add_Event(venue_list,reserves,congregation_name,vname,country,sdate,start_time,end_time,ename);        }
         else if(command=="deleteEvent"){
             ind++;
-            ind++;
+            // ind++;
+            // ind++;
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please start with the double qoutes"<<endl;
+                cout<<"Please start with the double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -1998,7 +1999,7 @@ int main(int argc, char *argv[]){
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"close the name with double qoutes"<<endl;
+                cout<<"close the name with double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -2006,7 +2007,7 @@ int main(int argc, char *argv[]){
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please enclose the venue name in double qoutes"<<endl;
+                cout<<"Please enclose the venue name in double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -2017,7 +2018,7 @@ int main(int argc, char *argv[]){
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"close the name with double qoutes"<<endl;
+                cout<<"close the name with double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -2025,7 +2026,7 @@ int main(int argc, char *argv[]){
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please enclose the congregation name in double qoutes"<<endl;
+                cout<<"Please enclose the congregation name in double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -2036,7 +2037,7 @@ int main(int argc, char *argv[]){
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"close the name with double qoutes"<<endl;
+                cout<<"close the name with double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -2058,7 +2059,7 @@ int main(int argc, char *argv[]){
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"start the end time with double qoutes"<<endl;
+                cout<<"start the end time with double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -2069,13 +2070,13 @@ int main(int argc, char *argv[]){
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please close the event name with double qoutes"<<endl;
+                cout<<"Please close the event name with double qoutes"<<endl;
                 continue;
             }
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please close the event name with double qoutes"<<endl;
+                cout<<"Please close the event name with double qoutes"<<endl;
                 continue;
             }
             delete_Event(venue_list,congregation_name,vname,country,sdate,start_time,ename);
@@ -2085,7 +2086,7 @@ int main(int argc, char *argv[]){
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please start with the double qoutes"<<endl;
+                cout<<"Please start with the double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -2096,7 +2097,7 @@ int main(int argc, char *argv[]){
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"close the name with double qoutes"<<endl;
+                cout<<"close the name with double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -2104,7 +2105,7 @@ int main(int argc, char *argv[]){
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please enclose the country name in double qoutes"<<endl;
+                cout<<"Please enclose the country name in double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -2115,7 +2116,7 @@ int main(int argc, char *argv[]){
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"close the name with double qoutes"<<endl;
+                cout<<"close the name with double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -2123,7 +2124,7 @@ int main(int argc, char *argv[]){
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"enclose the date string in doubel qoutes"<<endl;
+                cout<<"enclose the date string in doubel qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -2134,7 +2135,7 @@ int main(int argc, char *argv[]){
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please close the date in double qoutes"<<endl;
+                cout<<"Please close the date in double qoutes"<<endl;
                 continue;
             }
             show_Events(venue_list,vname,country,sdate);
@@ -2144,7 +2145,7 @@ int main(int argc, char *argv[]){
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please start with the double qoutes"<<endl;
+                cout<<"Please start with the double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -2155,7 +2156,7 @@ int main(int argc, char *argv[]){
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"close the name with double qoutes"<<endl;
+                cout<<"close the name with double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -2163,7 +2164,7 @@ int main(int argc, char *argv[]){
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please enclose the country name in double qoutes"<<endl;
+                cout<<"Please enclose the country name in double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -2174,7 +2175,7 @@ int main(int argc, char *argv[]){
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"close the name with double qoutes"<<endl;
+                cout<<"close the name with double qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -2182,7 +2183,7 @@ int main(int argc, char *argv[]){
             if(line[ind]!='\"'){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"enclose the date string in doubel qoutes"<<endl;
+                cout<<"enclose the date string in doubel qoutes"<<endl;
                 continue;
             }
             ind++;
@@ -2193,7 +2194,7 @@ int main(int argc, char *argv[]){
             if(ind==line.size()){
                 cout<<-1<<endl;
                 cout<<"Error"<<endl;
-                // cout<<"Please close the date in double qoutes"<<endl;
+                cout<<"Please close the date in double qoutes"<<endl;
                 continue;
             }
             show_Calendar(reserves,venue_list,congregation_name,vname,country);
@@ -2201,7 +2202,7 @@ int main(int argc, char *argv[]){
         else{
             cout<<-1<<endl;
             cout<<"Error"<<endl;
-            // cout<<"Unkown command"<<endl;
+            cout<<"Unkown command"<<endl;
         }
     }
 }
