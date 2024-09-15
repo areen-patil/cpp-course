@@ -1,0 +1,52 @@
+addCongregation "MadMax Tour India 2024" "Concert" "2024-07-26" "2024-07-29"
+-1
+Error
+addCongregation "Paris Olympics 2024" "Games" "2024-09-26" "2024-10-05"
+0
+addCongregation "Justin Bieber Tour" "Concert" "2024-10-10" "2024-10-09"
+-1
+Error
+addCongregation "Summer Fest 2025" "Concert" "2025-06-01" "2025-06-15"
+0
+addCongregation "G20 US 2026" "Convention" "2026-02-29" "2026-02-30"
+-1
+Error
+showCongregations
+2
+Paris Olympics 2024 Games 2024-09-26 2024-10-05
+Summer Fest 2025 Concert 2025-06-01 2025-06-15
+addVenue "Stade de France" "Bandra-East:Saint-Denis:Ile-de-France:932100:France" 80000
+0
+addVenue "Wembley Stadium" "Kormangala:London:England:HA9000:UK" 90000
+0
+addVenue "Olympic Stadium" "JPNagar:Montreal:Quebec:H1V3N7:Canada" 60000
+0
+showVenues "London:England::UK"
+1
+Wembley Stadium Kormangala:London:England:HA9000:UK 90000
+reserveVenue "Stade de France" "France" "Paris Olympics 2024"
+0
+reserveVenue "Wembley Stadium" "UK" "Paris Olympics 2024"
+0
+showReserved "Mars Olympics 1985"
+-1
+Error
+showReserved "Paris Olympics 2024"
+2
+Stade de France Bandra-East:Saint-Denis:Ile-de-France:932100:France 80000
+Wembley Stadium Kormangala:London:England:HA9000:UK 90000
+addEvent "Paris Olympics 2024" "Stade de France" "France" "2024-09-27" "09:00" "11:00" "Opening Ceremony"
+0
+addEvent "Paris Olympics 2024" "Stade de France" "France" "2024-09-27" "11:15" "13:30" "Athletics - Morning Session"
+-1
+Error
+addEvent "Paris Olympics 2024" "Stade de France" "France" "2024-09-27" "20:30" "23:45" "Athletics - Night Session"
+0
+addEvent "Paris Olympics 2024" "Stade de France" "France" "2024-09-28" "00:00" "02:00" "Football - Quarter Final"
+-1
+Error
+showEvents "Stade de France" "France" "2024-09-27"
+2
+Opening Ceremony 09:00 11:00
+Athletics - Night Session 20:30 23:45
+End
