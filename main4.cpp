@@ -19,10 +19,6 @@ public:
         this->start_date=start_date;
         this->end_date=end_date;
     }
-
-    // void display(){
-    //     cout<<venue_name<<" "
-    // }
 };
 class Congregation{
 public:
@@ -65,7 +61,6 @@ public :
 class Concert:public Congregation{
 public:
     int allowed_types(string program_type_temp){
-        // vector <string> allowed_types_vector={"Ceremony","Track and field","Indoor games","Water sports"};
         vector <string> allowed_types_vector={"Pre-concerts","Main Concert"};
         for(int i=0;i<allowed_types_vector.size();i++){
             if(allowed_types_vector[i]==program_type_temp){
@@ -138,43 +133,6 @@ public:
         this->venue_type=venue_type;
         this->location=location;
         this->capacity=capacity;
-        // country_name="";
-        // int ind=0;
-        // while(location[ind]!=':'){
-        //     place_name+=location[ind];
-        //     ind++;
-        // }
-        // ind++;
-        // while(location[ind]!=':'){
-        //     city_name+=location[ind];
-        //     ind++;
-        // }
-        // ind++;
-        // while(location[ind]!=':'){
-        //     state+=location[ind];
-        //     ind++;
-        // }
-        // ind++;
-        // while(location[ind]!=':'){
-        //     pincode+=location[ind];
-        //     ind++;
-        // }
-        // ind++;
-        // while(ind<location.size()){
-        //     country_name+=location[ind];
-        //     ind++;
-        // }
-        // int cnter=0;
-        // for(int i=0;i<location.size();i++){
-        //     if(location[i]==':'){
-        //         cnter++;
-        //     }
-        // }
-        // string state="";
-        // string country="";
-        // string pincode="";
-        // string city_name="";
-        // string place_name="";
         int ind=0;
         // if(cnter==4){
         while(location[ind]!=':'){
@@ -326,12 +284,6 @@ public:
     vector <string> conventions_types={"Food Court","Exhibition","Workshop","Main Conference","Banquet"};
     // vector <vector<strings>>         //STrat WorkginG Fomr HEre
     void add_Venue(string venue_name,string location,string venue_type,string capacity){
-        // venue_name,location,venue_type,capacity
-        // cout<<venue_name<<endl;
-        // cout<<location<<endl;
-        // cout<<venue_type<<endl;
-        // cout<<capacity<<endl;
-        // cout<<"entered the add venue function"<<endl;
         Venue v(venue_name,venue_type,location,capacity);
         venues_list.push_back(v);
         cout<<0<<endl;
@@ -417,13 +369,6 @@ public:
                 ind++;
             }
         }
-        // cout<<"entered the show venues function"<<endl;
-        // cout<<"location: "<<location<<endl;
-        // cout<<"place_name: "<<place_name<<endl;
-        // cout<<"city_name: "<<city_name<<endl;
-        // cout<<"state: "<<state<<endl;
-        // cout<<"pincode: "<<pincode<<endl;
-        // cout<<"country: "<<country<<endl;
         int count=0;
 
         for(int i=0;i<venues_list.size();i++){
@@ -477,13 +422,6 @@ public:
                 }
             }
             else if(place_name=="" && city_name!="" && state!="" && pincode=="" && country!=""){
-                // cout<<"checking the correct is else"<<endl;
-                // cout<<country<<endl;
-                // cout<<city_name<<endl;
-                // cout<<state<<endl;
-                // cout<<venues_list[i].country_name<<" :: "<<endl;//country<<endl;
-                // cout<<venues_list[i].city_name<<" :: "<<endl;//city_name<<endl;
-                // cout<<venues_list[i].state<<" :: "<<endl;//state<<endl;
                 if(venues_list[i].country_name==country && venues_list[i].city_name==city_name && venues_list[i].state==state){
                     if(type=="NONE"){
                         count++;
@@ -576,16 +514,11 @@ public:
                             
     }
     void add_program(string congregation_name,string program_type,string program_name,string start_date,string end_date){
-        // cout<<"eneterd the add program funciton"<<endl;
         int congregation_exists=0;
         int possible=1;
         for(int i=0;i<congregation_list.size();i++){
             if(congregation_list[i]->congregation_name==congregation_name){
                 congregation_exists=1;
-                // cout<<"congregation start date:"<<congregation_list[i]->start_date<<endl;
-                // cout<<"congregation end date:"<<congregation_list[i]->end_date<<endl;
-                // cout<<"start date:"<<start_date<<endl;
-                // cout<<"end date:"<<end_date<<endl;
                 if(date_comparator(congregation_list[i]->start_date,congregation_list[i]->end_date,start_date,end_date)==-1){
                     possible=0;
                 }
@@ -607,14 +540,12 @@ public:
         int found_type=0;
         for(int i=0;i<congregation_list.size();i++){
             if(congregation_list[i]->congregation_name==congregation_name){
-                // for(int j=0;j<congregation_list[i]->allowed_types(program_type))
                 if(congregation_list[i]->allowed_types(program_type)==1){
                     found_type=1;
                     break;
                 }
             }
         }
-        // cout<<"checking done"<<endl;
         if(found_type==1){
             Program p(program_name,program_type,start_date,end_date,congregation_name);
             program_list.push_back(p);
@@ -695,53 +626,6 @@ public:
         return;
     }
     void add_congregation(string congregation_name,string congregation_type,string start_date, string end_date){
-        // cout<<"entered the function of add congregation"<<endl;
-        // addCongregation "Paris Olympics 2024" "Games" "2024-07-01" "2024-06-28"
-        // if(congregation_type=="Games"){
-        //     for(int i=0;i<games.size();i++){
-        //         if(games[i].congregation_name==congregation_name && games[i].congregation_type==congregation_type){
-        //             cout<<-1<<endl;
-        //             cout<<"Error"<<endl;
-        //             return;
-        //         }
-        //     }
-        //     Games g(congregation_name,congregation_type,start_date,end_date);
-        //     games.push_back(g);
-        // }
-        // else if(congregation_type=="Conference"){
-        //     for(int i=0;i<conference.size();i++){
-        //         if(conference[i].congregation_name==congregation_name && conference[i].congregation_type==congregation_type){
-        //             cout<<-1<<endl;
-        //             cout<<"Error"<<endl;
-        //             return;
-        //         }
-        //     }
-        //     Conference c(congregation_name,congregation_type,start_date,end_date);
-        //     conference.push_back(c);
-        // }
-        // else if(congregation_type=="Concert"){
-        //     for(int i=0;i<concerts.size();i++){
-        //         if(concerts[i].congregation_name==congregation_name && concerts[i].congregation_type==congregation_type){
-        //             cout<<-1<<endl;
-        //             cout<<"Error"<<endl;
-        //             return;
-        //         }
-        //     }
-        //     Concert c(congregation_name,congregation_type,start_date,end_date);
-        //     concerts.push_back(c);
-        // }
-        // else if(congregation_type=="Conventions"){
-        //     for(int i=0;i<conventions.size();i++){
-        //         if(conventions[i].congregation_name==congregation_name && conventions[i].congregation_type==congregation_type){
-        //             cout<<-1<<endl;
-        //             cout<<"Error"<<endl;
-        //             return;
-        //         }
-        //     }
-        //     Conventions c(congregation_name,congregation_type,start_date,end_date);
-        //     conventions.push_back(c);
-        // }
-        // cout<<"entered the add congregation function"<<endl;
         int found=0;
         for(int i=0;i<congregation_list.size();i++){
             if(congregation_list[i]->congregation_name==congregation_name && congregation_list[i]->congregation_type==congregation_type){
@@ -785,59 +669,6 @@ public:
         int found=0;
         int ind=0;
         int check=1;
-        // for(int i=0;i<games.size();i++){
-        //     if(games[i].congregation_name==congregation_name){
-        //         found=1;
-        //         ind=i;
-        //         check=0;
-        //         break;
-        //     }
-        // }
-        // if(found==1){
-        //     games.erase(games.begin()+ind);
-        //     cout<<0<<endl;
-        //     return;
-        // }
-        
-        // for(int i=0;i<concerts.size();i++){
-        //     if(concerts[i].congregation_name==congregation_name){
-        //         found=1;
-        //         ind=i;
-        //         check=0;
-        //         break;
-        //     }
-        // }
-        // if(found==1){
-        //     concerts.erase(concerts.begin()+ind);
-        //     cout<<0<<endl;
-        //     return;
-        // }
-        // for(int i=0;i<conference.size();i++){
-        //     if(conference[i].congregation_name==congregation_name){
-        //         found=1;
-        //         ind=i;
-        //         check=0;
-        //         break;
-        //     }
-        // }
-        // if(found==1){
-        //     conference.erase(conference.begin()+ind);
-        //     cout<<0<<endl;
-        //     return;
-        // }
-        // for(int i=0;i<conventions.size();i++){
-        //     if(conventions[i].congregation_name==congregation_name){
-        //         found=1;
-        //         ind=i;
-        //         check=0;
-        //         break;
-        //     }
-        // }
-        // if(found==1){
-        //     conventions.erase(conventions.begin()+ind);
-        //     cout<<0<<endl;
-        //     return;
-        // }
         for(int i=0;i<congregation_list.size();i++){
             if(congregation_list[i]->congregation_name==congregation_name){
                 found=1;
@@ -903,8 +734,6 @@ public:
             if(program_list[i].program_name==progran_name){
                 p=program_list[i].program_type;
                 program_exist=1;
-                // start_date=program_list[i].start_date;
-                // end_date=program_list[i].end_date;
                 break;
             }
         }
@@ -914,14 +743,6 @@ public:
             // cout<<"the program does not exists"<<endl;
             return;
         }
-        // for(int i=0;i<program_list.size();i++){
-        //     if(program_list[i].program_name==progran_name ){
-        //         // p=program_list[i].program_type;
-        //         // start_date=program_list[i].start_date;
-        //         // end_date=program_list[i].end_date;
-        //         break;
-        //     }
-        // }
         for(int i=0;i<program_list.size();i++){
             if(program_list[i].program_name==progran_name){
                 p=program_list[i].program_type;
@@ -932,9 +753,7 @@ public:
         }
         int program_type_allowed=0;
         if(venue_type=="Indoor Stadium"){
-            // cout<<"indoor stadium"<<endl;
             for(int i=0;i<indoor_stadium.size();i++){
-                // cout<<indoor_stadium[i]<<" "<<p<<endl;
                 if(indoor_stadium[i]==p){
                     program_type_allowed=1;
                     break;
@@ -942,9 +761,7 @@ public:
             }
         }
         else if(venue_type=="Outdoor Stadium"){
-            // cout<<"checking for outdoor stadium"<<endl;
             for(int i=0;i<outdoor_stadium.size();i++){
-                // cout<<outdoor_stadium[i]<<" "<<p<<endl;
                 if(outdoor_stadium[i]==p){
                     program_type_allowed=1;
                     break;
@@ -952,7 +769,6 @@ public:
             }
         }
         else if(venue_type=="Hotel"){
-            // cout<<"hotel"<<endl;
             for(int i=0;i<Hotel.size();i++){
                 if(Hotel[i]==p){
                     program_type_allowed=1;
@@ -961,7 +777,6 @@ public:
             }
         }
         else if(venue_type=="Swimming Pool"){
-            // cout<<"swimmin pool"<<endl;
             for(int i=0;i<swimming_pool.size();i++){
                 if(swimming_pool[i]==p){
                     program_type_allowed=1;
@@ -970,7 +785,6 @@ public:
             }
         }
         else if(venue_type=="Convention Center"){
-            // cout<<"convetion center"<<endl;
             for(int i=0;i<convention_center.size();i++){
                 if(convention_center[i]==p){
                     program_type_allowed=1;
@@ -979,7 +793,6 @@ public:
             }
         }
         else if(venue_type=="Concert Hall"){
-            // cout<<"concert hall"<<endl;
             for(int i=0;i<concert_hall.size();i++){
                 if(concert_hall[i]==p){
                     program_type_allowed=1;
@@ -993,22 +806,9 @@ public:
             // cout<<"this program is not allowed"<<endl;
             return;
         }
-        // cout<<"program type allowd checkign done"<<endl;
-        // else if(venue_type==""){}
-        // else if(venue_type==""){}
-        // else if(venue_type==""){}
-        
-        // for(int )
         int dates_collide=0;
         for(int i=0;i<reserves_list.size();i++){
             if(reserves_list[i].venue_name==venue_name){
-                // string reserves_list[i].start_date=reserves_list[i].start_date;
-                // string reserves_list[i].end_date=reserves_list[i].end_date;
-                // cout<<reserves_list[i].start_date<<endl;
-                // cout<<start_date<<endl;
-                // cout<<reserves_list[i].start_date<<endl;
-                // cout<<end_date<<endl;
-                // int hi=3;
                 int a=date_compare(reserves_list[i].start_date,start_date);
                 int b=date_compare(reserves_list[i].end_date,end_date);
                 int c=date_compare(reserves_list[i].start_date,end_date);
@@ -1027,7 +827,6 @@ public:
                 }
             }
         }
-        // cout<<"dates collision checkign doen"<<endl;
         if(dates_collide==0){
             Resevation r(venue_name,country_name,congregation_name,progran_name,p,start_date,end_date);
             reserves_list.push_back(r);
@@ -1049,7 +848,6 @@ public:
         for(int i=0;i<reserves_list.size();i++){
             if(reserves_list[i].venue_name==venue_name && reserves_list[i].country_name==country && reserves_list[i].congregation_name==congregation_name && reserves_list[i].program_name==program_name){
                 found=1;
-                // ind=i;
                 indexes.push_back(i);
                 break;
             }
@@ -1094,9 +892,7 @@ public:
                 For_show_reserve sv(program_list[i].program_name,program_list[i].program_type);
                 v.push_back(sv);
             }
-            // else if(found==1){
-            //     v[index].count++;
-            // }
+
         }
         for(int i=0;i<v.size();i++){
             for(int j=0;j<reserves_list.size();j++){
@@ -1105,33 +901,7 @@ public:
                 }
             }
         }
-        // for(int j=0;j<v.size();j++){
-        //     for(int i=0;i<reserves_list.size();i++){
-        //         if(reserves_list[i].program_name==v[j].program_name ){
-        //             v[j].count++;
-        //         }
-        //     }
-        // }
-        // int total_count=0;
-        // for(int j=0;j<v.size();j++){
-        //     // cout<<v[j].program_name<<" "<<v[j].program_type<<" ";
-        //     // cout<<v[j].count<<endl;
-        //     for(int i=0;i<reserves_list.size();i++){
-        //         // if(reserves_list[i].congregation_name==congregation_name){
-        //         // }
-        //         if(reserves_list[i].program_name==v[j].program_name && reserves_list[i].program_type==v[j].program_type){
-        //             // reserves_list[i].display();
-        //             string venue_name=reserves_list[i].venue_name;
-        //             for(int k=0;k<venues_list.size();k++){
-        //                 if(venues_list[k].venue_name==venue_name){
-        //                     // cout<<venues_list[k].venue_name<<" "<<venues_list[k].location<<" "<<venues_list[k].venue_type<<" "<<venues_list[k].capacity<<endl;
-        //                     total_count++;
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
-        // cout<<total_count<<endl;
+        
         cout<<v.size()<<endl;
 
         for(int j=0;j<v.size();j++){
@@ -1178,10 +948,8 @@ int main(int argc, char *argv[]){
     Event_manamger manager;
     while(getline(cin,line)){
         stringstream ss(line);
-        // cout<<line<<endl;
         string command;
         ss>>command;
-        // cout<<command<<endl;
         if(command=="End"){
             // cout<<"Exiting the loop"<<endl;
             break;
@@ -1206,8 +974,6 @@ int main(int argc, char *argv[]){
                 // cout<<"incorrect date"<<endl;
                 continue;
             }
-            // cout<<congregation_name<<" "<<congregation_type<<" "<<start_date<<" "<<end_date<<endl;
-            // cout<<"now calling the add_Venue function"<<endl; 
             manager.add_congregation(congregation_name,congregation_type,start_date,end_date);
         }
         else if(command=="deleteCongregation"){
@@ -1235,11 +1001,6 @@ int main(int argc, char *argv[]){
             getline(ss,start_date,'"');
             getline(ss,end_date,'"');
             getline(ss,end_date,'"');
-            // cout<<"congregation name: "<<congregation_name<<endl;
-            // cout<<"program name: "<<program_name<<endl;
-            // cout<<"program_type: "<<program_type<<endl;
-            // cout<<"start_date: "<<start_date<<endl;
-            // cout<<"end_date: "<<end_date<<endl;
             int val=date_compare(start_date,end_date);
             if(val==1){
                 cout<<-1<<endl;
@@ -1247,7 +1008,6 @@ int main(int argc, char *argv[]){
                 cout<<"the date does not match"<<endl;
                 continue;
             }
-            // cout<<"calling the add program function"<<endl;
             manager.add_program(congregation_name,program_type,program_name,start_date,end_date);
         }
         else if(command=="deleteProgram"){
@@ -1278,11 +1038,6 @@ int main(int argc, char *argv[]){
             getline(ss,venue_type,'"');
             ss>>capacity;
             ss>>capacity;
-            // cout<<venue_name<<endl;
-            // cout<<location<<endl;
-            // cout<<venue_type<<endl;
-            // cout<<capacity<<endl;
-            // cout<<"add venue going to be called"<<endl;
             manager.add_Venue(venue_name,location,venue_type,capacity);
         }
         else if(command=="deleteVenue"){
@@ -1296,17 +1051,12 @@ int main(int argc, char *argv[]){
         }
         else if(command=="showVenues"){
             string location;
-            // string venue_type;
             string b;
             getline(ss,location,'"');
             getline(ss,location,'"');
             if (std::getline(ss, b, '"') && std::getline(ss, b, '"')) {
-        // Second string exists, and it's already stored in b
-                //  std::cout << "Second string: " << b << std::endl;
             } else {
-        // Second string does not exist, set b to an empty string
                 b = "";
-                // std::cout << "No second string found, b is set to an empty string." << std::endl;
             }
             getline(ss,b,'"');
             getline(ss,b,'"');
@@ -1332,7 +1082,6 @@ int main(int argc, char *argv[]){
             getline(ss,congregation_name,'"');
             getline(ss,program_name,'"');
             getline(ss,program_name,'"');
-            // cout<<"going to call the reserve venue funciton"<<endl;
             manager.reserve_venue(congregation_name,venue_name,country_name,program_name);
         }
         else if(command=="freeVenue"){
