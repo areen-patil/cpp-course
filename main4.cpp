@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-//AREEN PATIL
-class Resevation {
+class Resevation {  //reservation class for the reservations of the programs
 public:
     string venue_name;
     string congregation_name;
@@ -21,7 +20,7 @@ public:
         this->end_date=end_date;
     }
 };
-class Congregation{
+class Congregation{  //parent class 
 public:
     string congregation_name;
     string start_date;
@@ -43,7 +42,7 @@ public:
 
 };
 
-class  Games:public Congregation{
+class  Games:public Congregation{  //games child class of the parent class congregation
 public :    
     int allowed_types(string program_type_temp){
         vector <string> allowed_types_vector={"Ceremony","Track and field","Indoor games","Water sports"};
@@ -59,7 +58,7 @@ public :
     }
 };
 
-class Concert:public Congregation{
+class Concert:public Congregation{  //concert child class derived from the parent class congregation
 public:
     int allowed_types(string program_type_temp){
         vector <string> allowed_types_vector={"Pre-concerts","Main Concert"};
@@ -72,7 +71,7 @@ public:
     } 
     Concert(string congregation_name,string congregation_type,string start_date,string end_date):Congregation(congregation_name,congregation_type,start_date,end_date){}
 };
-class Conference:public Congregation{
+class Conference:public Congregation{ //conference child class derived from the parent class congregation
 public:    
     int allowed_types(string program_type_temp){
         vector <string> allowed_types_vector={"Workshop","Main Conference","Banquet"};
@@ -86,7 +85,7 @@ public:
     Conference(string congregation_name,string congregation_type,string start_date,string end_date):Congregation(congregation_name,congregation_type,start_date,end_date){}
 
 };
-class Conventions:public Congregation{
+class Conventions:public Congregation{  //conventions child class derived from the parent class congregation
 public:
     int allowed_types(string program_type_temp){
         vector <string> allowed_types_vector={"Food Court","Exhibition","Workshop","Main Conference","Banquet"};
@@ -100,7 +99,7 @@ public:
     Conventions(string congregation_name,string congregation_type,string start_date,string end_date):Congregation(congregation_name,congregation_type,start_date,end_date){}
 };
 
-class Program:public Congregation{
+class Program:public Congregation{  //programs class is also derived from the parent class congregation but it is not a one of the congregation type classes
 public:
     string program_name;
     string program_type;
@@ -114,7 +113,7 @@ public:
     }
 };
 
-class Venue{
+class Venue{  //venue class to represent the venues
 public:
     string venue_name;
     string country_name="";
@@ -164,7 +163,7 @@ public:
     }
 };
 
-class For_show_reserve{
+class For_show_reserve{  //additional class used in one of the functions
 public:
     int count=0;
     string program_name;
@@ -178,7 +177,7 @@ public:
 
 
 
-int date_compare(string date1,string date2) {
+int date_compare(string date1,string date2) {  //date comparator function that requires 1 if date1 is more or returns 2 if date2 is more
     // Extract year, month, and day from date1
     int year1 = std::stoi(date1.substr(0, 4));
     int month1 = std::stoi(date1.substr(5, 2));
@@ -220,7 +219,7 @@ int date_comparator(string congregation_start_date,string congregation_end_date,
     int b=date_compare(congregation_end_date,program_start_date);
     int c=date_compare(congregation_start_date,program_end_date);
     int d=date_compare(congregation_end_date,program_end_date);
-    if(a==0 || a==2){
+    if(a==0 || a==2){   //This function checks if the dates of the program lie within the dates of the congregation
         if(d==1 || d==0){
             // cout<<"returning the value of 1"<<endl;
             return 1;
@@ -236,24 +235,24 @@ int date_comparator(string congregation_start_date,string congregation_end_date,
     }
 }
 
-class Event_manamger{
+class Event_manamger{  //the class that manages everyting and that has all the functions
 public:
-    vector <string> indoor_stadium={"Indoor games"};
+    vector <string> indoor_stadium={"Indoor games"};  //these vectors define the diff program types that each of these venue types can allow
     vector <string> swimming_pool={"Water sports"};
     vector <string> outdoor_stadium={"Track and field","Ceremony","Main Concert","Pre Concert","Food Court","Exhibition"};
     vector <string> Hotel={"Food Court","Exhibition","Workshop","Main Conference","Banquet"};
     vector <string> convention_center={"Pre-concert","Main Concert","Workshop","Main Conference","Banquet","Food Court","Exhibition"};
     vector <string> concert_hall={"Pre Concert","Main Concert"};
-    vector <Resevation> reserves_list;
-    vector <Congregation*> congregation_list;
-    vector <Venue> venues_list;
-    vector <Program> program_list;
+    vector <Resevation> reserves_list;  //this vector stores the list of all the reservations
+    vector <Congregation*> congregation_list;  //this vector stores the list of all the congregations
+    vector <Venue> venues_list;     //this vector stores all the venues that have been added
+    vector <Program> program_list;    //this vector stores the list of all the program list
     vector <string> games_types={"Ceremony","Track and field","Indoor games","Water sports"};
     vector <string> confernce_types={"Workshop","Main Conference","Banquet"};
     vector <string> conventions_types={"Food Court","Exhibition","Workshop","Main Conference","Banquet"};
-    // vector <vector<strings>>         //STrat WorkginG Fomr HEre
+
     void add_Venue(string venue_name,string location,string venue_type,string capacity){
-        Venue v(venue_name,venue_type,location,capacity);
+        Venue v(venue_name,venue_type,location,capacity); //create a new venue and call the addvenue function
         venues_list.push_back(v);
         cout<<0<<endl;
         return;
@@ -261,7 +260,7 @@ public:
     void delete_venue(string venue_name,string country_name){
         int venue_exists=0;
         int ind=0;
-        for(int i=0;i<venues_list.size();i++){
+        for(int i=0;i<venues_list.size();i++){  //check if the venue exists
             if(venues_list[i].country_name==country_name && venues_list[i].venue_name==venue_name){
                 venue_exists=1;
                 ind=i;
@@ -274,7 +273,7 @@ public:
             // cout<<"Venue does not exists"<<endl;
             return;
         }
-        venues_list.erase(venues_list.begin()+ind);
+        venues_list.erase(venues_list.begin()+ind);  //delete the veneu from the veneus list
         cout<<0<<endl;
     }
     void show_Venues(string location,string type="NONE"){
@@ -290,7 +289,7 @@ public:
         string city_name="";
         string place_name="";
         int ind=0;
-        if(cnter==4){
+        if(cnter==4){  //extract all the city_name, pincode etc from the location string
             while(location[ind]!=':'){
                 place_name+=location[ind];
                 ind++;
@@ -316,8 +315,7 @@ public:
                 ind++;
             }
         }
-        else{
-            // int ind=0;
+        else{  //extract all the city_name, pincode etc from the location string
             while(location[ind]!=':'){
                 city_name+=location[ind];
                 ind++;
@@ -338,20 +336,19 @@ public:
                 ind++;
             }
         }
-        int count=0;
+        int count=0;      //counter to count the number of venues at the given location address
 
-        for(int i=0;i<venues_list.size();i++){
+        for(int i=0;i<venues_list.size();i++){  //this funciton contains the diff if else statemets the location to be searched for the venue is in which format
             if(city_name=="" && place_name=="" && pincode=="" && state=="" && country!=""){
                 if(venues_list[i].country_name==country){
-                    if(type=="NONE"){
+                    if(type=="NONE"){   //if venue type not given then do not check for the venue type
                         count++;
                     }
-                    else{
+                    else{       //else check if the venue type also matches
                         if(venues_list[i].venue_type==type){
                             count++;
                         }
                     }
-                    // venues_list[i].display();
                 }
             }
             else if(city_name!="" && place_name!="" && pincode!="" && state!="" && country!=""){
@@ -404,33 +401,28 @@ public:
             }
         }
         
-        cout<<count<<endl;
+        cout<<count<<endl;  //print the total number of events in the provided area
 
-        for(int i=0;i<venues_list.size();i++){
+        for(int i=0;i<venues_list.size();i++){  //similar code as above , only this time print instead of counting the venues
             if(city_name=="" && place_name=="" && pincode=="" && state=="" && country!=""){
                 if(venues_list[i].country_name==country){
                     if(type=="NONE"){
-                        // count++;
                         venues_list[i].display();
                     }
                     else{
                         if(venues_list[i].venue_type==type){
-                            // count++;
                             venues_list[i].display();
                         }
                     }
-                    // venues_list[i].display();
                 }
             }
             else if(city_name!="" && place_name!="" && pincode!="" && state!="" && country!=""){
                 if(venues_list[i].city_name==city_name && venues_list[i].country_name==country && venues_list[i].pincode==pincode && venues_list[i].place_name==place_name){
                     if(type=="NONE"){
-                        // count++;
                         venues_list[i].display();
                     }
                     else{
                         if(venues_list[i].venue_type==type){
-                            // count++;
                             venues_list[i].display();
                         }
                     }
@@ -439,12 +431,10 @@ public:
             else if(city_name!="" && place_name!="" && pincode=="" && state!="" && country!=""){
                 if(venues_list[i].city_name==city_name && venues_list[i].country_name==country && venues_list[i].place_name==place_name){
                     if(type=="NONE"){
-                        // count++;
                         venues_list[i].display();
                     }
                     else{
                         if(venues_list[i].venue_type==type){
-                            // count++;
                             venues_list[i].display();
                         }
                     }
@@ -453,27 +443,22 @@ public:
             else if(city_name=="" && place_name=="" && pincode!="" && country!=""){
                 if(venues_list[i].country_name==country && venues_list[i].pincode==pincode){
                     if(type=="NONE"){
-                        // count++;
                         venues_list[i].display();
                     }
                     else{
                         if(venues_list[i].venue_type==type){
-                            // count++;
                             venues_list[i].display();
                         }
                     }
                 }
             }
             else if(place_name=="" && city_name!="" && state!="" && pincode=="" && country!=""){
-                // cout<<"checking the correct is else"<<endl;
                 if(venues_list[i].country_name==country && venues_list[i].state==state && venues_list[i].city_name==city_name){
                     if(type=="NONE"){
-                        // count++;
                         venues_list[i].display();
                     }
                     else{
                         if(venues_list[i].venue_type==type){
-                            // count++;
                             venues_list[i].display();
                         }
                     }
@@ -485,11 +470,11 @@ public:
     void add_program(string congregation_name,string program_type,string program_name,string start_date,string end_date){
         int congregation_exists=0;
         int possible=1;
-        for(int i=0;i<congregation_list.size();i++){
+        for(int i=0;i<congregation_list.size();i++){  //check if the congreagation exists
             if(congregation_list[i]->congregation_name==congregation_name){
                 congregation_exists=1;
                 if(date_comparator(congregation_list[i]->start_date,congregation_list[i]->end_date,start_date,end_date)==-1){
-                    possible=0;
+                    possible=0;  //make possible as 0 if the dates are not possible
                 }
                 break;
             }
@@ -531,7 +516,7 @@ public:
     void delete_program(string congregation_name,string program_name){
         int congregation_exist=0;
         int ind1=0;
-        for(int i=0;i<congregation_list.size();i++){
+        for(int i=0;i<congregation_list.size();i++){  //check if the congregarion exists
             if(congregation_list[i]->congregation_name==congregation_name){
                 congregation_exist=1;
                 ind1=i;
@@ -547,7 +532,7 @@ public:
         }
         int program_exist=0;
         int ind2=0;
-        for(int i=0;i<program_list.size();i++){
+        for(int i=0;i<program_list.size();i++){  //check if the program exists
             if(program_list[i].congregation_name==congregation_name && program_list[i].program_name==program_name){
                 program_exist=1;
                 ind2=i;
@@ -561,7 +546,7 @@ public:
             return;
         }
         int reservation_exist=0;
-        for(int i=0;i<reserves_list.size();i++){
+        for(int i=0;i<reserves_list.size();i++){  //check if a reservation exists for the congregation and the program 
             // cout<<reserves_list[i].program_name<<" "<<program_name<<endl;
             if(reserves_list[i].program_name==program_name){
                 reservation_exist=1;
@@ -580,14 +565,14 @@ public:
     }
     void show_program(string congregation_name){
         int cnt=0;
-        for(int i=0;i<program_list.size();i++){
+        for(int i=0;i<program_list.size();i++){ //count the number of programs
             if(program_list[i].congregation_name==congregation_name){
                 // cout<<program_list[i].program_type<<" "<<program_list[i].program_name<<" "<<program_list[i].start_date<<" "<<program_list[i].end_date<<endl;
                 cnt++;
             }
         }
         cout<<cnt<<endl;
-        for(int i=0;i<program_list.size();i++){
+        for(int i=0;i<program_list.size();i++){ //print the programs
             if(program_list[i].congregation_name==congregation_name){
                 cout<<program_list[i].program_type<<" "<<program_list[i].program_name<<" "<<program_list[i].start_date<<" "<<program_list[i].end_date<<endl;
             }
@@ -596,7 +581,7 @@ public:
     }
     void add_congregation(string congregation_name,string congregation_type,string start_date, string end_date){
         int found=0;
-        for(int i=0;i<congregation_list.size();i++){
+        for(int i=0;i<congregation_list.size();i++){  //check if the congregation exists
             if(congregation_list[i]->congregation_name==congregation_name && congregation_list[i]->congregation_type==congregation_type){
                 found=1;
                 break;
@@ -608,8 +593,7 @@ public:
             // cout<<"the congregation aldready exists"<<endl;
             return;
         }
-        // cout<<"checking done"<<endl;
-        if(congregation_type=="Games"){
+        if(congregation_type=="Games"){  //depending on the congregation type create congregation of that particular type
             Congregation* c=new Games(congregation_name,congregation_type,start_date,end_date);
             congregation_list.push_back(c);
             cout<<0<<endl;
@@ -629,7 +613,6 @@ public:
             Congregation* c=new Concert(congregation_name,congregation_type,start_date,end_date);
             congregation_list.push_back(c);
             cout<<0<<endl;
-            // cout<<"concert congregation added"<<endl;
         }
         return;
     }
@@ -638,7 +621,7 @@ public:
         int found=0;
         int ind=0;
         int check=1;
-        for(int i=0;i<congregation_list.size();i++){
+        for(int i=0;i<congregation_list.size();i++){  //check if the congregation to be deleted exists or not
             if(congregation_list[i]->congregation_name==congregation_name){
                 found=1;
                 ind=i;
@@ -657,8 +640,8 @@ public:
     }
 
     void show_congregation(){
-        cout<<congregation_list.size()<<endl;
-        for(int i=0;i<congregation_list.size();i++){
+        cout<<congregation_list.size()<<endl;  //print the number of congregations
+        for(int i=0;i<congregation_list.size();i++){  //print the congregations
             congregation_list[i]->display();
         }
     }
@@ -720,7 +703,7 @@ public:
                 break;
             }
         }
-        int program_type_allowed=0;
+        int program_type_allowed=0;  //for the particular type of the venue see if the given program type is supported
         if(venue_type=="Indoor Stadium"){
             for(int i=0;i<indoor_stadium.size();i++){
                 if(indoor_stadium[i]==p){
@@ -776,7 +759,7 @@ public:
             return;
         }
         int dates_collide=0;
-        for(int i=0;i<reserves_list.size();i++){
+        for(int i=0;i<reserves_list.size();i++){  //check that the dates of the reservation to be made do not collide with any aldready existing reservation
             if(reserves_list[i].venue_name==venue_name){
                 int a=date_compare(reserves_list[i].start_date,start_date);
                 int b=date_compare(reserves_list[i].end_date,end_date);
@@ -826,7 +809,7 @@ public:
             cout<<"Error"<<endl;
             return;
         }
-        for(int i=indexes.size()-1;i>=0;i--){
+        for(int i=indexes.size()-1;i>=0;i--){  //after freeing the venue also delet any present resrevation of that venue
             reserves_list.erase(reserves_list.begin()+i);
         }
         cout<<0<<endl;
