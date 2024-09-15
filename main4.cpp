@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+//AREEN PATIL
 class Resevation {
 public:
     string venue_name;
@@ -127,8 +128,6 @@ public:
     string state="";
     vector <string> supported_program_types;
     Venue(string venue_name,string venue_type,string location,string capacity){
-        // cout<<"venue constructor called"<<endl;
-        // cout<<"the venue constructor called"<<endl;
         this->venue_name=venue_name;
         this->venue_type=venue_type;
         this->location=location;
@@ -159,36 +158,6 @@ public:
             country_name+=location[ind];
             ind++;
         }
-        // cout<<"location: "<<location<<endl;
-        // cout<<"place_name: "<<place_name;
-        // cout<<"city_name: "<<city_name<<endl;
-        // cout<<"state: "<<state<<endl;
-        // cout<<"pincode: "<<pincode<<endl;
-        // cout<<"country_name: "<<country_name<<endl;
-        // }
-        // else{
-        //     // int ind=0;
-        //     while(location[ind]!=':'){
-        //         city_name+=location[ind];
-        //         ind++;
-        //     }
-        //     ind++;
-        //     while(location[ind]!=':'){
-        //         state+=location[ind];
-        //         ind++;
-        //     }
-        //     ind++;
-        //     while(location[ind]!=':'){
-        //         pincode+=location[ind];
-        //         ind++;
-        //     }
-        //     ind++;
-        //     while(ind<location.size()){
-        //         country_name+=location[ind];
-        //         ind++;
-        //     }
-        // }
-        // cout<<"venue constructor ended"<<endl;
     }
     void display(){
         cout<<venue_name<<" "<<location<<" "<<venue_type<<" "<<capacity<<endl;
