@@ -1,0 +1,9 @@
+total species 4
+mammal 1
+lion 14 carnivore
+reptile 1
+iguana 28 medium
+bird 1
+eagle 14 insect
+aquatic 1
+hippo 14 plants
